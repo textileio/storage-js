@@ -12,7 +12,9 @@ const [wallet, external] = eth.getWallets();
 let contract: ProviderAPI;
 
 describe("eth/provider", () => {
+  jest.setTimeout(20000);
   beforeEach(async () => {
+    jest.setTimeout(10000);
     const factory = new BridgeProvider__factory(wallet);
     const provider = await factory.deploy();
     await provider.initialize();
