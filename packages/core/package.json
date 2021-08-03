@@ -6,6 +6,11 @@
   "module": "dist/esm/index.js",
   "types": "dist/index.d.ts",
   "type": "module",
+  "scripts": {
+    "build": "npm run build:cjs && npm run build:esm",
+    "build:cjs": "tsc -b",
+    "build:esm": "tsc -b tsconfig.esm.json"
+  },
   "exports": {
     ".": {
       "require": "./dist/cjs/index.js",

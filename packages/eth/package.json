@@ -5,6 +5,24 @@
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/index.d.ts",
+  "type": "module",
+  "scripts": {
+    "build": "npm run build:cjs && npm run build:esm",
+    "build:cjs": "tsc -b",
+    "build:esm": "tsc -b tsconfig.esm.json"
+  },
+  "exports": {
+    ".": {
+      "require": "./dist/cjs/index.js",
+      "import": "./dist/esm/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist/**/*.js?(.map)",
+    "dist/**/*.d.ts",
+    "src/**/*.ts"
+  ],
   "dependencies": {
     "@textile/eth-storage-bridge": "^0.0.1",
     "ethers": "^5.4.3"
