@@ -1,0 +1,15 @@
+{
+  "extends": "./tsconfig.settings.json",
+  "references": [
+    {
+      "path": "./packages/core"
+    },
+    {
+      "path": "./packages/near"
+    },
+    {
+      "path": "./packages/eth"
+    },
+  ],
+  "files": []
+}

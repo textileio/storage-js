@@ -1,0 +1,84 @@
+{
+  "name": "@textile/storage",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Javascript/Typescript SDK for Textile's blockchain ↔ Filecoin bridge system",
+  "main": "index.js",
+  "types": "module",
+  "scripts": {
+    "test": "jest",
+    "build": "tsc -b",
+    "lint": "eslint --ext .js,.ts .",
+    "verify": "npm run build && npm run test && npm run lint",
+    "changeset": "changeset",
+    "release": "npm run verify && changeset publish"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "keywords": [
+    "filecoin",
+    "bridge",
+    "sdk",
+    "textile",
+    "blockchain",
+    "storage"
+  ],
+  "author": "Carson Farmer <carson@textile.io>",
+  "license": "MIT AND Apache-2.0",
+  "devDependencies": {
+    "@changesets/cli": "^2.16.0",
+    "@stablelib/base64": "^1.0.1",
+    "@stablelib/ed25519": "^1.0.2",
+    "@types/bs58": "^4.0.1",
+    "@types/chai": "^4.2.21",
+    "@types/jest": "^26.0.24",
+    "@typescript-eslint/eslint-plugin": "^4.28.4",
+    "@typescript-eslint/parser": "^4.28.4",
+    "bs58": "^4.0.1",
+    "chai": "^4.3.4",
+    "eslint": "^7.31.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "fetch-mock-jest": "^1.5.1",
+    "form-data-encoder": "^1.2.0",
+    "formdata-node": "^3.6.2",
+    "jest": "^27.0.6",
+    "jest-environment-node": "^27.0.6",
+    "jest-localstorage-mock": "^2.4.14",
+    "node-fetch": "^2.6.1",
+    "prettier": "^2.3.2",
+    "ts-jest": "^27.0.4",
+    "ts-node": "^10.1.0",
+    "typescript": "^4.3.5"
+  },
+  "eslintConfig": {
+    "env": {
+      "es2021": true,
+      "node": true,
+      "jest": true
+    },
+    "extends": [
+      "eslint:recommended",
+      "plugin:@typescript-eslint/recommended",
+      "plugin:prettier/recommended"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+      "ecmaVersion": 12,
+      "sourceType": "module"
+    },
+    "plugins": [
+      "@typescript-eslint",
+      "prettier"
+    ],
+    "rules": {
+      "prettier/prettier": "error"
+    }
+  },
+  "nyc": {
+    "reporter": [
+      "html"
+    ]
+  }
+}

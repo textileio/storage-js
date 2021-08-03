@@ -1,0 +1,24 @@
+{
+  "name": "@textile/core-storage",
+  "version": "0.0.0",
+  "description": "Core interfaces for Textile's Filecoin bridge system",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/index.d.ts",
+  "type": "module",
+  "exports": {
+    ".": {
+      "require": "./dist/cjs/index.js",
+      "import": "./dist/esm/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist/**/*.js?(.map)",
+    "dist/**/*.d.ts",
+    "src/**/*.ts"
+  ],
+  "dependencies": {
+    "@stablelib/base64": "^1.0.1"
+  }
+}

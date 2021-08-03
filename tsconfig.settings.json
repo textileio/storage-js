@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "ES6",
+    "module": "CommonJS",
+    "incremental": true /* Enable incremental compilation */,
+    "declaration": true /* Generates corresponding '.d.ts' file. */,
+    "sourceMap": true /* Generates corresponding '.map' file. */,
+    "composite": true /* Enable project compilation */,
+    "importHelpers": false /* Import emit helpers from 'tslib'. */,
+    "strict": true /* Enable all strict type-checking options. */,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "resolveJsonModule": true
+  }
+}

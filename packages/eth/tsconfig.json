@@ -1,0 +1,23 @@
+{
+  "extends": "../../tsconfig.settings.json",
+  "compilerOptions": {
+    "outDir": "./dist/cjs",
+    "rootDir": "./src",
+    "declarationDir": "./dist",
+    "baseUrl": ".",
+    "paths": {
+      "@textile/core-storage": [
+        "../core"
+      ]
+    }
+  },
+  "references": [
+    {
+      "path": "../core"
+    }
+  ],
+  "exclude": [
+    "dist",
+    "tests"
+  ]
+}
