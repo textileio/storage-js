@@ -28,8 +28,14 @@ jobs:
         with:
           node-version: 12
 
+      - name: Upgrade NPM ⚒️
+        run: npm i -g npm@7
+
       - name: Install 🛠
         run: npm install
+
+      - name: Build 🧪
+        run: npm run build
 
       - name: Create PR or Publish 📦
         uses: changesets/action@master
