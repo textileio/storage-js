@@ -23,7 +23,8 @@ function initDeposit(contract: BridgeProvider, _account: string) {
       return contract.releaseDeposit(account).then(() => undefined);
     },
     releaseDeposits: async (): Promise<void> => {
-      return contract.releaseDeposits().then(() => undefined);
+      const gasLimit = 3000000;
+      return contract.releaseDeposits({ gasLimit }).then(() => undefined);
     },
     hasDeposit: async (account: string = _account): Promise<boolean> => {
       if (!account) throw new Error(`invalid account id: "${account}"`);
