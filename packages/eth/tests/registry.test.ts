@@ -9,8 +9,10 @@ const [wallet, external] = new MockProvider().getWallets();
 let contract: RegistryAPI;
 
 describe("eth/registry", () => {
+  jest.setTimeout(20000);
   describe("can interact with the deployed registry", () => {
     beforeEach(async () => {
+      jest.setTimeout(10000);
       const factory = new BridgeRegistry__factory(wallet);
       const registry = await factory.deploy();
       await registry.initialize();
