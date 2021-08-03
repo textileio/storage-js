@@ -1,16 +1,16 @@
-import { Signer, utils } from "ethers";
+import { Signer } from "ethers";
 import {
   BridgeProvider__factory,
   BridgeProvider,
 } from "@textile/eth-storage-bridge";
 import type { ProviderAPI } from "@textile/core-storage";
-import { PROVIDER_ID } from "./utils";
+import { PROVIDER_ID, GAS, DEPOSIT } from "./utils";
 
 function initDeposit(contract: BridgeProvider, _account: string) {
   return {
     addDeposit: async (
       account: string = _account,
-      amount = utils.parseUnits("360000", "gwei")
+      amount = DEPOSIT
     ): Promise<void> => {
       if (!account) throw new Error(`invalid account id: "${account}"`);
       return contract
@@ -23,8 +23,7 @@ function initDeposit(contract: BridgeProvider, _account: string) {
       return contract.releaseDeposit(account).then(() => undefined);
     },
     releaseDeposits: async (): Promise<void> => {
-      const gasLimit = 3000000;
-      return contract.releaseDeposits({ gasLimit }).then(() => undefined);
+      return contract.releaseDeposits({ gasLimit: GAS }).then(() => undefined);
     },
     hasDeposit: async (account: string = _account): Promise<boolean> => {
       if (!account) throw new Error(`invalid account id: "${account}"`);
@@ -38,7 +37,6 @@ function initDeposit(contract: BridgeProvider, _account: string) {
 
 export { ProviderAPI };
 
-// TODO: This should not have to be async
 export async function create(
   account: Signer,
   contractId: string = PROVIDER_ID
