@@ -11,6 +11,7 @@
     "lint": "eslint --ext .js,.ts .",
     "verify": "npm run build && npm run test && npm run lint",
     "changeset": "changeset",
+    "version": "changeset version",
     "release": "npm run verify && changeset publish"
   },
   "workspaces": [
