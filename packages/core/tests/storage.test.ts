@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { expect } from "chai";
 import fetchMock from "fetch-mock-jest";
 import { FormData, File } from "formdata-node";

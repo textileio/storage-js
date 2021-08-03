@@ -61,7 +61,8 @@ describe("eth/main", () => {
     const formData = new FormData();
     formData.set("file", "Hello, world!");
     const encoder = new Encoder(formData);
-    const request = await contract.store(Readable.from(encoder) as any, {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    await contract.store(Readable.from(encoder) as any, {
       headers: encoder.headers,
     });
 

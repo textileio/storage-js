@@ -10,7 +10,7 @@ globalThis.document = { title: "documentTitle" } as Document;
 const keyStore = new keyStores.InMemoryKeyStore();
 let walletConnection: WalletConnection;
 let lastRedirectUrl: string;
-let history: [any, string, string | null | undefined][] = [];
+let history: [unknown, string, string | null | undefined][] = [];
 
 describe("near/utils", () => {
   beforeEach(async () => {
@@ -25,7 +25,11 @@ describe("near/utils", () => {
         },
       },
       history: {
-        replaceState: (data: any, title: string, url?: string | null): void => {
+        replaceState: (
+          data: unknown,
+          title: string,
+          url?: string | null
+        ): void => {
           history.push([data, title, url]);
         },
       },

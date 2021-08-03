@@ -1,12 +1,8 @@
 import { expect } from "chai";
-// import { Wallet } from "ethers";
-// import { computeAddress } from "@ethersproject/transactions";
 import { decodeURLSafe } from "@stablelib/base64";
 import { verify } from "@stablelib/ed25519";
 import { createAndSignToken } from "../src/token";
 import { createSigner, decode, encode } from "./utils";
-
-// const wallet = Wallet.createRandom();
 
 describe("core/token", () => {
   const { kid, signer, publicKey } = createSigner();
@@ -31,8 +27,6 @@ describe("core/token", () => {
 
   test("jws has correct payload", async () => {
     const iss = kid;
-    // Manually create address from public key
-    // const addr = computeAddress(wallet.publicKey);
     const aud = "audience";
     const token = await createAndSignToken(signer, { kid }, { aud, iss });
     const [, p] = token.split(".");
@@ -57,6 +51,7 @@ describe("core/token", () => {
 
   test("jws fails when missing audience or issuer", async () => {
     try {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       await createAndSignToken(signer, {} as any, {} as any);
       throw new Error("wrong error");
     } catch (err) {

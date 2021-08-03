@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   ConnectedWalletAccount,
   Near,
@@ -8,7 +9,7 @@ import {
 } from "near-api-js";
 import { encodeURLSafe } from "@stablelib/base64";
 
-import { GAS, DEPOSIT } from "../src/utils";
+import { DEPOSIT } from "../src/utils";
 
 const decoder = new TextDecoder();
 export const decode = decoder.decode.bind(decoder);
@@ -74,10 +75,8 @@ export const mocks = {
         }
       },
       async functionCall({
-        contractId,
         methodName,
         args = {},
-        gas = GAS,
         attachedDeposit = DEPOSIT,
       }: FunctionCallOptions) {
         switch (methodName) {
@@ -134,7 +133,7 @@ export const mocks = {
     const _connectedAccount = {
       connection: fakeNear.connection,
       accountId,
-      async viewFunction(contractId: string, methodName: string, args: any) {
+      async viewFunction(_contractId: string, methodName: string) {
         switch (methodName) {
           case "listProviders": {
             return providers;

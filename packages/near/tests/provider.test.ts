@@ -1,7 +1,7 @@
 import { expect } from "chai";
 import { keyStores } from "near-api-js";
 
-import { requestSignIn, DEPOSIT } from "../src/utils";
+import { requestSignIn } from "../src/utils";
 import { mocks } from "./utils";
 import { create, ProviderAPI } from "../src/provider";
 
