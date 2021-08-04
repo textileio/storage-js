@@ -13,7 +13,7 @@ export async function create(
   // WARN: This is a non-standard JWT
   // Borrows ideas from: https://github.com/ethereum/EIPs/issues/1341
   const address = await signer.getAddress();
-  const chainId = await signer.getChainId();
+  const chainId = signer.provider ? await signer.getChainId() : "unknown";
   const kid = `eth:${chainId}:${address}`;
   const header: Header = { alg: "ETH", typ: "JWT", kid };
   const sign = {
