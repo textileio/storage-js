@@ -1,5 +1,5 @@
 import type { Signer } from "ethers";
-import { utils } from "ethers";
+import { utils, BigNumber } from "ethers";
 import {
   createAndSignToken,
   Header,
@@ -12,7 +12,9 @@ export async function create(
 ): Promise<string> {
   // WARN: This is a non-standard JWT
   // Borrows ideas from: https://github.com/ethereum/EIPs/issues/1341
-  const kid = await signer.getAddress();
+  const address = await signer.getAddress();
+  const chainId = await signer.getChainId();
+  const kid = `eth:${chainId}:${address}`;
   const header: Header = { alg: "ETH", typ: "JWT", kid };
   const sign = {
     signMessage: async (message: Uint8Array): Promise<Uint8Array> => {
