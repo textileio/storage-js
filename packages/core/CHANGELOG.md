@@ -1,5 +1,11 @@
 # @textile/core-storage
 
+## 0.0.4
+
+### Patch Changes
+
+- cd97cb0: Adds support to eth for checking network and chainid at runtime
+
 ## 0.0.3
 
 ### Patch Changes
