@@ -1,12 +1,14 @@
 import { expect } from "chai";
-import { Wallet, utils } from "ethers";
+import { utils } from "ethers";
 import { decodeURLSafe } from "@stablelib/base64";
+import { MockProvider } from "ethereum-waffle";
 import { create } from "../src/token";
+
+const eth = new MockProvider();
+const [signer] = eth.getWallets();
 
 const decoder = new TextDecoder();
 const decode = decoder.decode.bind(decoder);
-
-const signer = Wallet.createRandom();
 
 const aud = "broker.id";
 
@@ -19,7 +21,8 @@ describe("eth/token", () => {
 
   test("jws has correct header", async () => {
     const token = await create(signer, { aud });
-    const kid = await signer.getAddress();
+    const addr = await signer.getAddress();
+    const kid = `eth:1337:${addr}`;
     const [h] = token.split(".");
     const header = JSON.parse(decode(decodeURLSafe(h)));
     expect(header).to.have.property("alg", "ETH");
@@ -28,7 +31,8 @@ describe("eth/token", () => {
   });
 
   test("jws has correct payload", async () => {
-    const kid = await signer.getAddress();
+    const addr = await signer.getAddress();
+    const kid = `eth:1337:${addr}`;
     const token = await create(signer, { aud });
     const [, p] = token.split(".");
     const payload = JSON.parse(decode(decodeURLSafe(p)));

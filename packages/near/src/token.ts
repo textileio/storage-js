@@ -15,7 +15,8 @@ export function encodeKey(publicKey: Uint8Array): string {
   buffer[1] = 0x01;
   buffer.set(publicKey, 2);
   // prefix with `z` to indicate multi-base base58btc encoding
-  const kid = `z${base58btc(buffer)}`;
+  const key = `z${base58btc(buffer)}`;
+  const kid = `${"near:testnet"}:${key}`;
   return kid;
 }
 
