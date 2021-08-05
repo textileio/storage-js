@@ -7,6 +7,7 @@
   "types": "module",
   "scripts": {
     "test": "jest",
+    "docs": "typedoc --packages .",
     "build": "npm run build --workspaces",
     "lint": "eslint --ext .js,.ts .",
     "verify": "npm run build && npm run test && npm run lint",
@@ -51,6 +52,7 @@
     "prettier": "^2.3.2",
     "ts-jest": "^27.0.4",
     "ts-node": "^10.1.0",
+    "typedoc": "^0.21.5",
     "typescript": "^4.3.5"
   },
   "nyc": {

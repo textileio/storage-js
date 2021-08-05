@@ -119,7 +119,7 @@ await requestSignIn(wallet)
 const storage = await init(wallet.account());
 ```
 
-### ETH
+### ETH/Polygon
 
 ```typescript
 import { providers } from "ethers";
@@ -194,7 +194,7 @@ const keyStore = new keyStores.UnencryptedFileSystemKeyStore(
 );
 const accountId = "account.testnet";
 const networkId = "testnet";
-const aud = "provider.testnet";
+const aud = "provider.testnet"; // Intended audience
 const signer = new InMemorySigner(keyStore);
 
 const token = await createToken(signer, { accountId, networkId, aud });
@@ -206,12 +206,12 @@ Here's an example using the `createToken` API from a browser script (assumes you
 
 ```javascript
 import { providers } from "ethers";
-import { init } from "@textile/eth-storage";
+import { createToken } from "@textile/eth-storage";
 
 await window.ethereum.enable();
 const provider = new providers.Web3Provider(window.ethereum);
 const signer = provider.getSigner();
-const aud = "0xaddress"
+const aud = "0xaddress" // Intended audience
 
 const token = await createToken(signer, { aud });
 ```

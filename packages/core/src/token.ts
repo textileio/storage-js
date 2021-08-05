@@ -50,7 +50,7 @@ const { stringify } = JSON;
  * @returns A Promise that resolves to the full JWS string.
  * @note For ETH-based tokens we borrow ideas from: https://github.com/ethereum/EIPs/issues/1341
  */
-export async function createAndSignToken(
+export async function createToken(
   signer: Signer,
   header: Header,
   claims: StandardClaims
