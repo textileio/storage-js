@@ -8,3 +8,15 @@ import { ProviderAPI } from "./provider";
 import { RegistryAPI } from "./registry";
 
 export type CoreAPI = StorageAPI & ProviderAPI & RegistryAPI;
+
+/**
+ * Options for init configuration
+ */
+export interface InitOptions {
+  // Provider contract id.
+  provider?: string;
+  // Registry contract id.
+  registry?: string;
+  // Self-signed access token.
+  token?: string;
+}

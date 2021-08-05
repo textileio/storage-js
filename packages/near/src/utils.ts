@@ -20,6 +20,12 @@ export interface SignInOptions {
   failureUrl?: string;
 }
 
+/**
+ * Request to sign the user into their local browser wallet.
+ * @param connection A pre-defined Wallet Connection.
+ * @param opts A set of options for controlling callback urls etc.
+ * @returns A promise.
+ */
 export async function requestSignIn(
   connection: WalletConnection,
   { successUrl, failureUrl, contractId }: SignInOptions = {}

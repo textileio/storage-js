@@ -1,10 +1,6 @@
 import type { Signer } from "near-api-js";
 import { encode as base58btc } from "bs58";
-import {
-  createAndSignToken,
-  Header,
-  StandardClaims,
-} from "@textile/core-storage";
+import { createToken, Header, StandardClaims } from "@textile/core-storage";
 import { AccountOptions } from "./utils";
 
 export function encodeKey(publicKey: Uint8Array): string {
@@ -20,6 +16,12 @@ export function encodeKey(publicKey: Uint8Array): string {
   return kid;
 }
 
+/**
+ * Create and sign a JWT token to produce a JWS.
+ * @param signer A generic Signer interface as specified in `@textile/core-storage`.
+ * @param opts A set of configuration options and Standard Claims as specified by the JWT spec.
+ * @returns A promise that resolves to a token string.
+ */
 export async function create(
   signer: Signer,
   { accountId, networkId, ...claims }: AccountOptions & StandardClaims
@@ -36,6 +38,6 @@ export async function create(
     },
   };
   claims = { iss: kid, sub: accountId, ...claims };
-  const { token } = await createAndSignToken(sign, header, claims);
+  const { token } = await createToken(sign, header, claims);
   return token;
 }

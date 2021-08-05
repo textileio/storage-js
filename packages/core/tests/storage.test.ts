@@ -6,7 +6,7 @@ import { Encoder } from "form-data-encoder";
 import { Readable } from "stream";
 import { StorageAPI, Status, create } from "../src/storage";
 import { createSigner } from "./utils";
-import { createAndSignToken } from "../src/token";
+import { createToken } from "../src/token";
 
 // // Mock env setup
 // globalThis.window = { localStorage } as Window & typeof globalThis;
@@ -71,7 +71,7 @@ describe("core/storage", () => {
   beforeEach(async () => {
     const { signer, kid } = createSigner();
     const aud = "provider";
-    const { token } = await createAndSignToken(signer, { kid }, { aud });
+    const { token } = await createToken(signer, { kid }, { aud });
     const host = "https://fake.broker.dev";
     storage = create({ token, host });
   });
