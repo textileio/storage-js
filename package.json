@@ -7,7 +7,7 @@
   "types": "module",
   "scripts": {
     "test": "jest",
-    "docs": "typedoc --packages .",
+    "docs": "npm run build && typedoc --packages .",
     "build": "npm run build --workspaces",
     "lint": "eslint --ext .js,.ts .",
     "verify": "npm run build && npm run test && npm run lint",
