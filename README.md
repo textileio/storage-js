@@ -97,7 +97,7 @@ console.log([...deals])
 
 # API
 
-Full library documentation (TypeDocs), comming soon!
+[Full library documentation (TypeDocs), available on GitHub Pages](https://textileio.github.io/storage-js/)!
 
 Each chain-specific implementation supports a core interface, defined by `@textile/core-storage`. Developers will generally **not** need to import or work directly with `@textile/core-storage`, and instead will import either `@textile/near-storage` or `@textile/eth-storage` (for ETH and Polygon).
 
