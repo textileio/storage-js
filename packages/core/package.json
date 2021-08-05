@@ -1,6 +1,6 @@
 {
   "name": "@textile/core-storage",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Core interfaces for Textile's Filecoin bridge system",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
