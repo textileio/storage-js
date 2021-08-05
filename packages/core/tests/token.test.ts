@@ -10,7 +10,11 @@ describe("core/token", () => {
     const iss = kid;
     const aud = "audience";
     const alg = "EdDSA";
-    const token = await createAndSignToken(signer, { kid, alg }, { iss, aud });
+    const { token } = await createAndSignToken(
+      signer,
+      { kid, alg },
+      { iss, aud }
+    );
     expect(typeof token).to.equal("string");
     expect(token).to.contain(".");
   });
@@ -18,7 +22,7 @@ describe("core/token", () => {
   test("jws has correct header", async () => {
     const iss = kid;
     const aud = "audience";
-    const token = await createAndSignToken(signer, { kid }, { iss, aud });
+    const { token } = await createAndSignToken(signer, { kid }, { iss, aud });
     const [h] = token.split(".");
     const header = JSON.parse(decode(decodeURLSafe(h)));
     expect(header).to.have.property("alg", "EdDSA"); // Also the default
@@ -28,7 +32,7 @@ describe("core/token", () => {
   test("jws has correct payload", async () => {
     const iss = kid;
     const aud = "audience";
-    const token = await createAndSignToken(signer, { kid }, { aud, iss });
+    const { token } = await createAndSignToken(signer, { kid }, { aud, iss });
     const [, p] = token.split(".");
     const payload = JSON.parse(decode(decodeURLSafe(p)));
     expect(payload).to.have.property("iss", kid);
@@ -43,7 +47,7 @@ describe("core/token", () => {
       new Date()
     ).valueOf();
     const aud = "audience";
-    const token = await createAndSignToken(signer, { kid }, { exp, aud });
+    const { token } = await createAndSignToken(signer, { kid }, { exp, aud });
     const [, p] = token.split(".");
     const payload = JSON.parse(decode(decodeURLSafe(p)));
     expect(payload).to.have.property("exp", exp);
@@ -61,7 +65,7 @@ describe("core/token", () => {
 
   test("jws can be validated", async () => {
     const aud = "audience";
-    const token = await createAndSignToken(signer, { kid }, { aud });
+    const { token } = await createAndSignToken(signer, { kid }, { aud });
     const [h, p, s] = token.split(".");
     const message = encode(`${h}.${p}`);
     const signature = decodeURLSafe(s);

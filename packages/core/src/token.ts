@@ -15,7 +15,7 @@ export interface StandardClaims {
   /**  (not before time): Time before which the JWT must not be accepted for processing */
   nbf?: number;
   /** (issued at time): Time at which the JWT was issued; can be used to determine age of the JWT */
-  iat?: string;
+  iat?: number;
 }
 
 /**
@@ -54,19 +54,19 @@ export async function createAndSignToken(
   signer: Signer,
   header: Header,
   claims: StandardClaims
-): Promise<string> {
+): Promise<{ token: string; claims: StandardClaims; header: Header }> {
   if (!claims.iss && !header.kid)
     throw new Error("InputError: must include kid header and/or iss claim");
   header = { typ: "JWT", alg: "EdDSA", ...header };
   // Default subject to the issuer
   claims.sub = claims.sub ?? claims.iss ?? header.kid;
   // UNIX origin time for current time
-  const now = ~~(Date.now() / 1000);
-  const oneHour = now + 60 * 10; // Default to ~10 minutes
+  const iat = ~~(Date.now() / 1000);
+  const exp = iat + 60 * 10; // Default to ~10 minutes
   const payload = {
-    nbf: now,
-    iat: now,
-    exp: oneHour,
+    nbf: iat - 10,
+    iat,
+    exp,
     ...claims,
   };
   // Optional: https://www.npmjs.com/package/canonicalize
@@ -82,5 +82,5 @@ export async function createAndSignToken(
   const signature = await signer.signMessage(message);
   const encodedSignature = encodeURLSafe(signature).replace(padReg, "");
   const jws = `${encodedHeader}.${encodedPayload}.${encodedSignature}`;
-  return jws;
+  return { token: jws, claims: payload, header };
 }

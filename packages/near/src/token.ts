@@ -36,6 +36,6 @@ export async function create(
     },
   };
   claims = { iss: kid, sub: accountId, ...claims };
-  const token = await createAndSignToken(sign, header, claims);
+  const { token } = await createAndSignToken(sign, header, claims);
   return token;
 }

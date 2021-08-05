@@ -71,7 +71,7 @@ describe("core/storage", () => {
   beforeEach(async () => {
     const { signer, kid } = createSigner();
     const aud = "provider";
-    const token = await createAndSignToken(signer, { kid }, { aud });
+    const { token } = await createAndSignToken(signer, { kid }, { aud });
     const host = "https://fake.broker.dev";
     storage = create({ token, host });
   });

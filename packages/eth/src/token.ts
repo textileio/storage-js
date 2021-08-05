@@ -22,7 +22,9 @@ export async function create(
       return utils.arrayify(sig);
     },
   };
-  claims = { iss: kid, ...claims };
-  const token = await createAndSignToken(sign, header, claims);
+  const iat = ~~(Date.now() / 1000);
+  const exp = iat + 60 * 60; // Default to ~60 minutes
+  claims = { iss: kid, exp, iat, ...claims };
+  const { token } = await createAndSignToken(sign, header, claims);
   return token;
 }
