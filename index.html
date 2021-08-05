@@ -1,0 +1,304 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>@textile/storage</title>
+	<meta name="description" content="Documentation for @textile/storage">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/css/main.css">
+	<script async src="assets/js/search.js" id="search-script"></script>
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.json" data-base=".">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="index.html" class="title">@textile/storage</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<h1>@textile/storage</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<div class="tsd-panel tsd-typography">
+				<a href="#textilestorage" id="textilestorage" style="color: inherit; text-decoration: none;">
+					<h1>@textile/storage</h1>
+				</a>
+				<p><a href="./LICENSE"><img src="https://img.shields.io/github/license/textileio/storage-js.svg" alt="GitHub license"></a>
+					<a href="./package.json"><img src="https://img.shields.io/github/package-json/v/textileio/storage-js.svg" alt="GitHub package.json version"></a>
+					<a href="https://github.com/textileio/storage-js/releases/latest"><img src="https://img.shields.io/github/release/textileio/storage-js.svg" alt="Release"></a>
+				<a href="https://github.com/RichardLitt/standard-readme"><img src="https://img.shields.io/badge/standard--readme-OK-green.svg" alt="standard-readme compliant"></a></p>
+				<p><img src="https://github.com/textileio/storage-js/workflows/Test/badge.svg" alt="Tests">
+				<img src="https://github.com/textileio/storage-js/workflows/Release/badge.svg" alt="Release"></p>
+				<blockquote>
+					<p>Javascript/Typescript SDK for Textile&#39;s blockchain ↔ Filecoin bridge system</p>
+				</blockquote>
+				<a href="#table-of-contents" id="table-of-contents" style="color: inherit; text-decoration: none;">
+					<h1>Table of Contents</h1>
+				</a>
+				<ul>
+					<li><a href="#background">Background</a></li>
+					<li><a href="#install">Install</a></li>
+					<li><a href="#usage">Usage</a></li>
+					<li><a href="#api">API</a></li>
+					<li><a href="#maintainers">Maintainers</a></li>
+					<li><a href="#contributing">Contributing</a></li>
+					<li><a href="#license">License</a></li>
+				</ul>
+				<a href="#background" id="background" style="color: inherit; text-decoration: none;">
+					<h1>Background</h1>
+				</a>
+				<p><strong>Your bridge to the Filecoin storage ecosystem.</strong></p>
+				<p>Textile&#39;s <code>storage-js</code> project provides zero-config Typescript/Javascript SDKs that make it easy to store data on the Filecoin network from any Blockchain-based dApp. <code>storage-js</code> should feel comfortable to developers already familiar with <a href="https://near.org/">NEAR</a> and <a href="https://docs.ethers.io/">Ethers</a> Javascript libraries. The chain-specific SDKs provide small but powerful API surfaces that integrates nicely with existing NEAR/ETH/Polygon development best practices. Simply import the library, deposit some funds, and you are ready to start submitting data to be stored on the Filecoin network.</p>
+				<a href="#install" id="install" style="color: inherit; text-decoration: none;">
+					<h1>Install</h1>
+				</a>
+				<pre><code class="language-bash"><span style="color: #000000">npm i @textile/near-storage</span>
+<span style="color: #000000">npm i @textile/eth-storage</span>
+</code></pre>
+				<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
+					<h2>Usage</h2>
+				</a>
+				<p><strong>Currently, the published <code>@textile/near-storage</code> library does not conform to the <code>@textile/core-storage</code> API. See <a href="https://github.com/textileio/near-storage-js">https://github.com/textileio/near-storage-js</a> for the current published version.</strong></p>
+				<a href="#near" id="near" style="color: inherit; text-decoration: none;">
+					<h3>NEAR</h3>
+				</a>
+				<pre><code class="language-typescript"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">connect</span><span style="color: #000000">, </span><span style="color: #001080">WalletConnection</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;near-api-js&quot;</span><span style="color: #000000">;</span>
+<span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">init</span><span style="color: #000000">, </span><span style="color: #001080">requestSignIn</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;@textile/near-storage&quot;</span><span style="color: #000000">;</span>
+
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">near</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #795E26">connect</span><span style="color: #000000">({ ... });</span>
+
+<span style="color: #008000">// Need to access wallet</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">wallet</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">WalletConnection</span><span style="color: #000000">(</span><span style="color: #001080">near</span><span style="color: #000000">, </span><span style="color: #0000FF">null</span><span style="color: #000000">);</span>
+<span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #795E26">requestSignIn</span><span style="color: #000000">(</span><span style="color: #001080">wallet</span><span style="color: #000000">);</span>
+
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">storage</span><span style="color: #000000"> = </span><span style="color: #795E26">init</span><span style="color: #000000">(</span><span style="color: #001080">wallet</span><span style="color: #000000">.</span><span style="color: #795E26">account</span><span style="color: #000000">());</span>
+
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">blob</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">Blob</span><span style="color: #000000">([</span><span style="color: #A31515">&quot;Hello, world!&quot;</span><span style="color: #000000">], { </span><span style="color: #001080">type:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;text/plain&quot;</span><span style="color: #000000"> });</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">file</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">File</span><span style="color: #000000">([</span><span style="color: #001080">blob</span><span style="color: #000000">], </span><span style="color: #A31515">&quot;welcome.txt&quot;</span><span style="color: #000000">, {</span>
+<span style="color: #000000">  </span><span style="color: #001080">type:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;text/plain&quot;</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #001080">lastModified:</span><span style="color: #000000"> </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #267F99">Date</span><span style="color: #000000">().</span><span style="color: #795E26">getTime</span><span style="color: #000000">(),</span>
+<span style="color: #000000">});</span>
+
+<span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">storage</span><span style="color: #000000">.</span><span style="color: #795E26">addDeposit</span><span style="color: #000000">();</span>
+
+<span style="color: #0000FF">const</span><span style="color: #000000"> { </span><span style="color: #0070C1">id</span><span style="color: #000000">, </span><span style="color: #0070C1">cid</span><span style="color: #000000"> } = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">storage</span><span style="color: #000000">.</span><span style="color: #795E26">store</span><span style="color: #000000">(</span><span style="color: #001080">file</span><span style="color: #000000">);</span>
+
+<span style="color: #0000FF">const</span><span style="color: #000000"> { </span><span style="color: #0070C1">request</span><span style="color: #000000">, </span><span style="color: #0070C1">deals</span><span style="color: #000000"> } = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">storage</span><span style="color: #000000">.</span><span style="color: #795E26">status</span><span style="color: #000000">(</span><span style="color: #001080">id</span><span style="color: #000000">)</span>
+<span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">request</span><span style="color: #000000">.</span><span style="color: #001080">status_code</span><span style="color: #000000">)</span>
+<span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">([...</span><span style="color: #001080">deals</span><span style="color: #000000">])</span>
+
+<span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">wallet</span><span style="color: #000000">.</span><span style="color: #795E26">signOut</span><span style="color: #000000">();</span>
+</code></pre>
+				<a href="#ethpolygon" id="ethpolygon" style="color: inherit; text-decoration: none;">
+					<h3>ETH/Polygon</h3>
+				</a>
+				<pre><code class="language-typescript"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">providers</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;ethers&quot;</span><span style="color: #000000">;</span>
+<span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">init</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;@textile/eth-storage&quot;</span><span style="color: #000000">;</span>
+
+<span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">window</span><span style="color: #000000">.</span><span style="color: #001080">ethereum</span><span style="color: #000000">.</span><span style="color: #795E26">enable</span><span style="color: #000000">();</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">provider</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #001080">providers</span><span style="color: #000000">.</span><span style="color: #795E26">Web3Provider</span><span style="color: #000000">(</span><span style="color: #001080">window</span><span style="color: #000000">.</span><span style="color: #001080">ethereum</span><span style="color: #000000">);</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">wallet</span><span style="color: #000000"> = </span><span style="color: #001080">provider</span><span style="color: #000000">.</span><span style="color: #795E26">getSigner</span><span style="color: #000000">();</span>
+
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">storage</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #795E26">init</span><span style="color: #000000">(</span><span style="color: #001080">wallet</span><span style="color: #000000">);</span>
+
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">blob</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">Blob</span><span style="color: #000000">([</span><span style="color: #A31515">&quot;Hello, world!&quot;</span><span style="color: #000000">], { </span><span style="color: #001080">type:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;text/plain&quot;</span><span style="color: #000000"> });</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">file</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">File</span><span style="color: #000000">([</span><span style="color: #001080">blob</span><span style="color: #000000">], </span><span style="color: #A31515">&quot;welcome.txt&quot;</span><span style="color: #000000">, {</span>
+<span style="color: #000000">  </span><span style="color: #001080">type:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;text/plain&quot;</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #001080">lastModified:</span><span style="color: #000000"> </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #267F99">Date</span><span style="color: #000000">().</span><span style="color: #795E26">getTime</span><span style="color: #000000">(),</span>
+<span style="color: #000000">});</span>
+
+<span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">storage</span><span style="color: #000000">.</span><span style="color: #795E26">addDeposit</span><span style="color: #000000">();</span>
+
+<span style="color: #0000FF">const</span><span style="color: #000000"> { </span><span style="color: #0070C1">id</span><span style="color: #000000">, </span><span style="color: #0070C1">cid</span><span style="color: #000000"> } = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">storage</span><span style="color: #000000">.</span><span style="color: #795E26">store</span><span style="color: #000000">(</span><span style="color: #001080">file</span><span style="color: #000000">);</span>
+
+<span style="color: #0000FF">const</span><span style="color: #000000"> { </span><span style="color: #0070C1">request</span><span style="color: #000000">, </span><span style="color: #0070C1">deals</span><span style="color: #000000"> } = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">storage</span><span style="color: #000000">.</span><span style="color: #795E26">status</span><span style="color: #000000">(</span><span style="color: #001080">id</span><span style="color: #000000">)</span>
+<span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">request</span><span style="color: #000000">.</span><span style="color: #001080">status_code</span><span style="color: #000000">)</span>
+<span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">([...</span><span style="color: #001080">deals</span><span style="color: #000000">])</span>
+</code></pre>
+				<a href="#api" id="api" style="color: inherit; text-decoration: none;">
+					<h1>API</h1>
+				</a>
+				<p>Full library documentation (TypeDocs), comming soon!</p>
+				<p>Each chain-specific implementation supports a core interface, defined by <code>@textile/core-storage</code>. Developers will generally <strong>not</strong> need to import or work directly with <code>@textile/core-storage</code>, and instead will import either <code>@textile/near-storage</code> or <code>@textile/eth-storage</code> (for ETH and Polygon).</p>
+				<p>The main entry point of the libraries expose an initialization function that takes a NEAR <code>Account</code> or an ETH <code>Signer</code> object, and returns a <code>Storage</code> object with a minimal <code>CoreAPI</code> interface. The initialization function can optionally take information about a known Filecoin storage provider, otherwise, a provider is automatically selected:</p>
+				<a href="#near-1" id="near-1" style="color: inherit; text-decoration: none;">
+					<h3>NEAR</h3>
+				</a>
+				<pre><code class="language-typescript"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">connect</span><span style="color: #000000">, </span><span style="color: #001080">WalletConnection</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;near-api-js&quot;</span><span style="color: #000000">;</span>
+<span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">init</span><span style="color: #000000">, </span><span style="color: #001080">requestSignIn</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;@textile/near-storage&quot;</span><span style="color: #000000">;</span>
+
+<span style="color: #008000">// See https://github.com/textileio/storage-js-dapp-demo for a basic demo</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">near</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #795E26">connect</span><span style="color: #000000">({ ... });</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">wallet</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">WalletConnection</span><span style="color: #000000">(</span><span style="color: #001080">near</span><span style="color: #000000">, </span><span style="color: #0000FF">null</span><span style="color: #000000">);</span>
+
+<span style="color: #008000">// Sign-in and authorize the @textile/near-storage smart contract (`filecoin-bridge.testnet`)</span>
+<span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #795E26">requestSignIn</span><span style="color: #000000">(</span><span style="color: #001080">wallet</span><span style="color: #000000">)</span>
+
+<span style="color: #008000">// Initialize the storage object, and you&#039;re ready to go</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">storage</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #795E26">init</span><span style="color: #000000">(</span><span style="color: #001080">wallet</span><span style="color: #000000">.</span><span style="color: #795E26">account</span><span style="color: #000000">());</span>
+</code></pre>
+				<a href="#ethpolygon-1" id="ethpolygon-1" style="color: inherit; text-decoration: none;">
+					<h3>ETH/Polygon</h3>
+				</a>
+				<pre><code class="language-typescript"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">providers</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;ethers&quot;</span><span style="color: #000000">;</span>
+<span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">init</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;@textile/eth-storage&quot;</span><span style="color: #000000">;</span>
+
+<span style="color: #008000">// See https://github.com/textileio/storage-js-dapp-demo for a basic demo</span>
+<span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">window</span><span style="color: #000000">.</span><span style="color: #001080">ethereum</span><span style="color: #000000">.</span><span style="color: #795E26">enable</span><span style="color: #000000">();</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">provider</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #001080">providers</span><span style="color: #000000">.</span><span style="color: #795E26">Web3Provider</span><span style="color: #000000">(</span><span style="color: #001080">window</span><span style="color: #000000">.</span><span style="color: #001080">ethereum</span><span style="color: #000000">);</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">wallet</span><span style="color: #000000"> = </span><span style="color: #001080">provider</span><span style="color: #000000">.</span><span style="color: #795E26">getSigner</span><span style="color: #000000">();</span>
+
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">storage</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #795E26">init</span><span style="color: #000000">(</span><span style="color: #001080">wallet</span><span style="color: #000000">);</span>
+</code></pre>
+				<a href="#create-session" id="create-session" style="color: inherit; text-decoration: none;">
+					<h2>Create session</h2>
+				</a>
+				<p>The core storage API revolves around two key concepts: <em>deposits</em> and <em>storage</em>. Leaving a deposit provides a degree of Sybil resistance, such that users looking to store data on Filecoin via the provider must first deposit funds proportional to the length of time they&#39;d like to continue storing data (for testnet, the default timeout is ~10 minutes). To store data, a minimum (default) deposit must be left with a provider:</p>
+				<pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">deposit</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">storage</span><span style="color: #000000">.</span><span style="color: #795E26">addDeposit</span><span style="color: #000000">();</span>
+<span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">deposit</span><span style="color: #000000">);</span>
+</code></pre>
+				<p>A deposit is generally valid for about 10 minutes (based on blocks) on NEAR, and defaults to 1 hour on ETH/Polygon (to avoid frequent signing). The session duration is a function of the amount of funds deposited. Currently on ETH, this is 100 GWEI per second, or about 0.00036 ETH per hour. On NEAR this is about 0.25 NEAR for a 10 minute session. After funds expire, they can be released by the user or any other party interacting with the SDK&#39;s smart contract (such as the provider itself). This provides a means to release funds after a storage session has completed, without locking funds in the contract during the Filecoin proof process.</p>
+				<a href="#store-data" id="store-data" style="color: inherit; text-decoration: none;">
+					<h2>Store data</h2>
+				</a>
+				<p>Once a valid deposit is available, the app/user can push data to the provider using the <code>store</code> endpoint. This simply takes a <code>File</code> (or <code>FormData</code>) object, and send the bytes to the provider for preparation and Filecoin storage. In NodeJS, callers can also provide a Readable stream object that contains the FormData bytes (see tests for examples).</p>
+				<pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">blob</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">Blob</span><span style="color: #000000">([</span><span style="color: #A31515">&quot;Hello, world!&quot;</span><span style="color: #000000">], { </span><span style="color: #001080">type:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;text/plain&quot;</span><span style="color: #000000"> });</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">file</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">File</span><span style="color: #000000">([</span><span style="color: #001080">blob</span><span style="color: #000000">], </span><span style="color: #A31515">&quot;welcome.txt&quot;</span><span style="color: #000000">, {</span>
+<span style="color: #000000">  </span><span style="color: #001080">type:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;text/plain&quot;</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #001080">lastModified:</span><span style="color: #000000"> </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #267F99">Date</span><span style="color: #000000">().</span><span style="color: #795E26">getTime</span><span style="color: #000000">()</span>
+<span style="color: #000000">});</span>
+
+<span style="color: #008000">// The store API also takes optional configuration parameters</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> { </span><span style="color: #0070C1">id</span><span style="color: #000000">, </span><span style="color: #0070C1">cid</span><span style="color: #000000"> } = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">storage</span><span style="color: #000000">.</span><span style="color: #795E26">store</span><span style="color: #000000">(</span><span style="color: #001080">file</span><span style="color: #000000">);</span>
+</code></pre>
+				<a href="#check-status" id="check-status" style="color: inherit; text-decoration: none;">
+					<h2>Check status</h2>
+				</a>
+				<p>The status of the file can be queried using its <code>id</code>. The storage process ranges from &quot;batching&quot; files together, to &quot;preparing&quot; the storage deal, to &quot;auctioning&quot; the set of storage deals, to the actual &quot;deal making&quot; and &quot;success&quot; of the final storage deal on Filecoin. Along the way, clients may query the status in order to provide feedback to users.</p>
+				<pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> { </span><span style="color: #0070C1">request</span><span style="color: #000000">, </span><span style="color: #0070C1">deals</span><span style="color: #000000"> } = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">storage</span><span style="color: #000000">.</span><span style="color: #795E26">status</span><span style="color: #000000">(</span><span style="color: #001080">id</span><span style="color: #000000">);</span>
+<span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">request</span><span style="color: #000000">.</span><span style="color: #001080">status_code</span><span style="color: #000000">);</span>
+<span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">deals</span><span style="color: #000000">); </span><span style="color: #008000">// Array, empty if no deals on chain yet</span>
+</code></pre>
+				<p>It is now safe to release the deposit:</p>
+				<pre><code class="language-typescript"><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">storage</span><span style="color: #000000">.</span><span style="color: #795E26">releaseDeposit</span><span style="color: #000000">();</span>
+</code></pre>
+				<a href="#other-apis" id="other-apis" style="color: inherit; text-decoration: none;">
+					<h2>Other APIs</h2>
+				</a>
+				<p>The chain-specific SDKs provide a few other endpoints for developers to use, including a <a href="https://datatracker.ietf.org/doc/html/rfc7515">JSON Web Signature (JWS)</a> signing utility that let&#39;s you create a (modified) JWS token.</p>
+				<a href="#near-2" id="near-2" style="color: inherit; text-decoration: none;">
+					<h3>NEAR</h3>
+				</a>
+				<p>Here&#39;s an example using the <code>createToken</code> API from a NodeJS script (assumes you have signed in with <a href="https://github.com/near/near-cli"><code>near login</code></a>):</p>
+				<pre><code class="language-javascript"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">keyStores</span><span style="color: #000000">, </span><span style="color: #001080">InMemorySigner</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;near-api-js&quot;</span><span style="color: #000000">;</span>
+<span style="color: #AF00DB">import</span><span style="color: #000000"> </span><span style="color: #001080">os</span><span style="color: #000000"> </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;os&quot;</span><span style="color: #000000">;</span>
+<span style="color: #AF00DB">import</span><span style="color: #000000"> </span><span style="color: #001080">path</span><span style="color: #000000"> </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;path&quot;</span><span style="color: #000000">;</span>
+<span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">createToken</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;@textile/near-storage&quot;</span><span style="color: #000000">;</span>
+
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">keyStore</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #001080">keyStores</span><span style="color: #000000">.</span><span style="color: #795E26">UnencryptedFileSystemKeyStore</span><span style="color: #000000">(</span>
+<span style="color: #000000">  </span><span style="color: #001080">path</span><span style="color: #000000">.</span><span style="color: #795E26">join</span><span style="color: #000000">(</span><span style="color: #001080">os</span><span style="color: #000000">.</span><span style="color: #795E26">homedir</span><span style="color: #000000">(), </span><span style="color: #A31515">&quot;.near-credentials&quot;</span><span style="color: #000000">)</span>
+<span style="color: #000000">);</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">accountId</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;account.testnet&quot;</span><span style="color: #000000">;</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">networkId</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;testnet&quot;</span><span style="color: #000000">;</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">aud</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;provider.testnet&quot;</span><span style="color: #000000">; </span><span style="color: #008000">// Intended audience</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">signer</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">InMemorySigner</span><span style="color: #000000">(</span><span style="color: #001080">keyStore</span><span style="color: #000000">);</span>
+
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">token</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #795E26">createToken</span><span style="color: #000000">(</span><span style="color: #001080">signer</span><span style="color: #000000">, { </span><span style="color: #001080">accountId</span><span style="color: #000000">, </span><span style="color: #001080">networkId</span><span style="color: #000000">, </span><span style="color: #001080">aud</span><span style="color: #000000"> });</span>
+</code></pre>
+				<a href="#ethpolygon-2" id="ethpolygon-2" style="color: inherit; text-decoration: none;">
+					<h3>ETH/Polygon</h3>
+				</a>
+				<p>Here&#39;s an example using the <code>createToken</code> API from a browser script (assumes you have Metamask installed):</p>
+				<pre><code class="language-javascript"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">providers</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;ethers&quot;</span><span style="color: #000000">;</span>
+<span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">createToken</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;@textile/eth-storage&quot;</span><span style="color: #000000">;</span>
+
+<span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">window</span><span style="color: #000000">.</span><span style="color: #001080">ethereum</span><span style="color: #000000">.</span><span style="color: #795E26">enable</span><span style="color: #000000">();</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">provider</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #001080">providers</span><span style="color: #000000">.</span><span style="color: #795E26">Web3Provider</span><span style="color: #000000">(</span><span style="color: #001080">window</span><span style="color: #000000">.</span><span style="color: #001080">ethereum</span><span style="color: #000000">);</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">signer</span><span style="color: #000000"> = </span><span style="color: #001080">provider</span><span style="color: #000000">.</span><span style="color: #795E26">getSigner</span><span style="color: #000000">();</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">aud</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;0xaddress&quot;</span><span style="color: #000000"> </span><span style="color: #008000">// Intended audience</span>
+
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">token</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #795E26">createToken</span><span style="color: #000000">(</span><span style="color: #001080">signer</span><span style="color: #000000">, { </span><span style="color: #001080">aud</span><span style="color: #000000"> });</span>
+</code></pre>
+				<a href="#maintainers" id="maintainers" style="color: inherit; text-decoration: none;">
+					<h1>Maintainers</h1>
+				</a>
+				<p><a href="https://github.com/carsonfarmer">@carsonfarmer</a></p>
+				<a href="#contributing" id="contributing" style="color: inherit; text-decoration: none;">
+					<h1>Contributing</h1>
+				</a>
+				<p>PRs accepted.</p>
+				<p>Small note: If editing the README, please conform to the
+				<a href="https://github.com/RichardLitt/standard-readme">standard-readme</a> specification.</p>
+				<a href="#license" id="license" style="color: inherit; text-decoration: none;">
+					<h1>License</h1>
+				</a>
+				<p>MIT AND Apache-2.0, © 2021 Textile.io</p>
+			</div>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class=" ">
+						<a href="modules.html">Exports</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
