@@ -1,5 +1,5 @@
 import type { Signer } from "ethers";
-import { utils, BigNumber } from "ethers";
+import { utils } from "ethers";
 import {
   createAndSignToken,
   Header,

@@ -22,7 +22,7 @@ describe("eth/token", () => {
   test("jws has correct header", async () => {
     const token = await create(signer, { aud });
     const addr = await signer.getAddress();
-    const kid = `eth:1337:${addr}`;
+    const kid = `unknown:1337:${addr}`;
     const [h] = token.split(".");
     const header = JSON.parse(decode(decodeURLSafe(h)));
     expect(header).to.have.property("alg", "ETH");
@@ -32,7 +32,7 @@ describe("eth/token", () => {
 
   test("jws has correct payload", async () => {
     const addr = await signer.getAddress();
-    const kid = `eth:1337:${addr}`;
+    const kid = `unknown:1337:${addr}`;
     const token = await create(signer, { aud });
     const [, p] = token.split(".");
     const payload = JSON.parse(decode(decodeURLSafe(p)));
