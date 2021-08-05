@@ -24,6 +24,7 @@
     "src/**/*.ts"
   ],
   "dependencies": {
+    "@textile/core-storage": "^0.0.2",
     "@textile/eth-storage-bridge": "^0.0.1",
     "ethers": "^5.4.3"
   },
