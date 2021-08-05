@@ -6,6 +6,8 @@ import { create as createProvider } from "./provider";
 import { create as createToken } from "./token";
 
 export * from "./utils";
+export * from "@textile/core-storage";
+export { createToken };
 
 /**
  * Options for init configuration
