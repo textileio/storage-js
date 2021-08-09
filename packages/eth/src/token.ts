@@ -17,7 +17,9 @@ export async function create(
   const address = await signer.getAddress();
   const network = await signer.provider?.getNetwork();
   const chain = network?.chainId ?? "unknown";
-  const net = network?.name ?? "eth";
+  let net = network?.name;
+  if (net?.startsWith("matic")) net = "poly";
+  else net = "eth";
   const kid = `${net}:${chain}:${address}`;
   const header: Header = { alg: "ETH", typ: "JWT", kid };
   const sign = {
