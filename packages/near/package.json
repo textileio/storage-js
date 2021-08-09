@@ -24,7 +24,7 @@
     "src/**/*.ts"
   ],
   "dependencies": {
-    "@textile/core-storage": "^0.0.4",
+    "@textile/core-storage": "^0.0.5",
     "@types/bs58": "^4.0.1",
     "bs58": "^4.0.1",
     "near-api-js": "^0.42.0"

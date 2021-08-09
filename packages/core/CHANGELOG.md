@@ -1,5 +1,11 @@
 # @textile/core-storage
 
+## 0.0.5
+
+### Patch Changes
+
+- 00080ff: Include network info + prep for soft release
+
 ## 0.0.4
 
 ### Patch Changes
