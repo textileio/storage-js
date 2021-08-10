@@ -14,13 +14,13 @@ export async function create(
 ): Promise<string> {
   // WARN: This is a non-standard JWT
   // Borrows ideas from: https://github.com/ethereum/EIPs/issues/1341
-  const address = await signer.getAddress();
+  const iss = await signer.getAddress();
   const network = await signer.provider?.getNetwork();
   const chain = network?.chainId ?? "unknown";
   let net = network?.name;
   if (net?.startsWith("matic")) net = "poly";
   else net = "eth";
-  const kid = `${net}:${chain}:${address}`;
+  const kid = `${net}:${chain}:${iss}`;
   const header: Header = { alg: "ETH", typ: "JWT", kid };
   const sign = {
     signMessage: async (message: Uint8Array): Promise<Uint8Array> => {
@@ -30,7 +30,7 @@ export async function create(
   };
   const iat = ~~(Date.now() / 1000);
   const exp = iat + 60 * 60; // Default to ~60 minutes
-  claims = { iss: kid, exp, iat, ...claims };
+  claims = { iss, exp, iat, ...claims };
   const { token } = await createToken(sign, header, claims);
   return token;
 }
