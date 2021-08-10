@@ -36,7 +36,7 @@ describe("eth/token", () => {
     const token = await create(signer, { aud });
     const [, p] = token.split(".");
     const payload = JSON.parse(decode(decodeURLSafe(p)));
-    expect(payload).to.have.property("iss", kid);
+    expect(payload).to.have.property("iss", addr);
     expect(payload).to.have.property("sub", kid);
     expect(payload).to.have.property("aud", aud);
     const { exp, iat } = payload;
