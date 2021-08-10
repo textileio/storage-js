@@ -1,5 +1,13 @@
 # @textile/eth-storage
 
+## 0.0.6
+
+### Patch Changes
+
+- Changes how issuer and subject are encoded
+- Updated dependencies [undefined]
+  - @textile/core-storage@0.0.6
+
 ## 0.0.5
 
 ### Patch Changes
