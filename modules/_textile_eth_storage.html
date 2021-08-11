@@ -70,12 +70,6 @@
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
-							<h3>Enumerations</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-enum tsd-parent-kind-module"><a href="../enums/_textile_eth_storage.Status.html" class="tsd-kind-icon">Status</a></li>
-							</ul>
-						</section>
-						<section class="tsd-index-section ">
 							<h3>Interfaces</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/_textile_eth_storage.AddDeposit.html" class="tsd-kind-icon">Add<wbr>Deposit</a></li>
@@ -98,6 +92,7 @@
 							<h3>Type aliases</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="_textile_eth_storage.html#CoreAPI" class="tsd-kind-icon">CoreAPI</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="_textile_eth_storage.html#Status" class="tsd-kind-icon">Status</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
@@ -131,6 +126,31 @@
 						</ul>
 					</aside>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
+					<a name="Status" class="tsd-anchor"></a>
+					<h3>Status</h3>
+					<div class="tsd-signature tsd-kind-icon">Status<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">&quot;Unknown&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;Batching&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;Preparing&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;Auctioning&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;DealMaking&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;Success&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;Error&quot;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in core/dist/storage.d.ts:14</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Status is the status of a StorageRequest.</p>
+							<ul>
+								<li><code>Unknown</code> is the default value to an unitialized StorageRequest. This status must be
+								considered invalid in any real StorageRequest instance.</li>
+								<li><code>Batching</code> indicates that the storage request is being batched.</li>
+								<li><code>Preparing</code> indicates that the batch containing the data is being prepared.</li>
+								<li><code>Auctioning</code> indicates that the batch containing the data is being auctioned.</li>
+								<li><code>DealMaking</code> indicates that the data is in deal-making process.</li>
+								<li><code>Success</code> indicates that the request was stored in Filecoin.</li>
+								<li>`Error indicates that there is some error handling the request.</li>
+							</ul>
+						</div>
+					</div>
+				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Variables</h2>
@@ -140,7 +160,7 @@
 					<div class="tsd-signature tsd-kind-icon">DEPOSIT<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">BigNumber</span><span class="tsd-signature-symbol"> = ...</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/textileio/storage-js/blob/96072f0/packages/eth/src/utils.ts#L4">eth/src/utils.ts:4</a></li>
+							<li>Defined in <a href="https://github.com/textileio/storage-js/blob/4eeb086/packages/eth/src/utils.ts#L4">eth/src/utils.ts:4</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -150,7 +170,7 @@
 					<div class="tsd-signature tsd-kind-icon">GAS<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">3000000</span><span class="tsd-signature-symbol"> = 3000000</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/textileio/storage-js/blob/96072f0/packages/eth/src/utils.ts#L5">eth/src/utils.ts:5</a></li>
+							<li>Defined in <a href="https://github.com/textileio/storage-js/blob/4eeb086/packages/eth/src/utils.ts#L5">eth/src/utils.ts:5</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -160,7 +180,7 @@
 					<div class="tsd-signature tsd-kind-icon">PROVIDER_<wbr>ID<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">&quot;0x8845A98EF6580d2a109f8FcfC10cc1d6007059fc&quot;</span><span class="tsd-signature-symbol"> = &quot;0x8845A98EF6580d2a109f8FcfC10cc1d6007059fc&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/textileio/storage-js/blob/96072f0/packages/eth/src/utils.ts#L3">eth/src/utils.ts:3</a></li>
+							<li>Defined in <a href="https://github.com/textileio/storage-js/blob/4eeb086/packages/eth/src/utils.ts#L3">eth/src/utils.ts:3</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -170,7 +190,7 @@
 					<div class="tsd-signature tsd-kind-icon">REGISTRY_<wbr>ID<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">&quot;0x7085f413A72dCd53D001eb97971bbf25793262cC&quot;</span><span class="tsd-signature-symbol"> = &quot;0x7085f413A72dCd53D001eb97971bbf25793262cC&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/textileio/storage-js/blob/96072f0/packages/eth/src/utils.ts#L2">eth/src/utils.ts:2</a></li>
+							<li>Defined in <a href="https://github.com/textileio/storage-js/blob/4eeb086/packages/eth/src/utils.ts#L2">eth/src/utils.ts:2</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -187,7 +207,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/textileio/storage-js/blob/96072f0/packages/eth/src/token.ts#L11">eth/src/token.ts:11</a></li>
+									<li>Defined in <a href="https://github.com/textileio/storage-js/blob/4eeb086/packages/eth/src/token.ts#L11">eth/src/token.ts:11</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -225,7 +245,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/textileio/storage-js/blob/96072f0/packages/eth/src/index.ts#L49">eth/src/index.ts:49</a></li>
+									<li>Defined in <a href="https://github.com/textileio/storage-js/blob/4eeb086/packages/eth/src/index.ts#L49">eth/src/index.ts:49</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -278,9 +298,6 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-enum tsd-parent-kind-module">
-						<a href="../enums/_textile_eth_storage.Status.html" class="tsd-kind-icon">Status</a>
-					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-module">
 						<a href="../interfaces/_textile_eth_storage.AddDeposit.html" class="tsd-kind-icon">Add<wbr>Deposit</a>
 					</li>
@@ -326,6 +343,9 @@
 					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
 						<a href="_textile_eth_storage.html#CoreAPI" class="tsd-kind-icon">CoreAPI</a>
 					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
+						<a href="_textile_eth_storage.html#Status" class="tsd-kind-icon">Status</a>
+					</li>
 					<li class=" tsd-kind-variable tsd-parent-kind-module">
 						<a href="_textile_eth_storage.html#DEPOSIT" class="tsd-kind-icon">DEPOSIT</a>
 					</li>
@@ -357,9 +377,6 @@
 				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
 				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
 				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
