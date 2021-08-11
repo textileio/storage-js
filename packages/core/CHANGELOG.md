@@ -1,5 +1,11 @@
 # @textile/core-storage
 
+## 0.0.7
+
+### Patch Changes
+
+- Status is now a string enum
+
 ## 0.0.6
 
 ### Patch Changes

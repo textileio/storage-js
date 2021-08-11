@@ -5,6 +5,8 @@
 ### Patch Changes
 
 - Updated dependencies [undefined]
+  - @textile/core-storage@0.0.7
+- Updated dependencies [undefined]
   - @textile/core-storage@0.0.6
 - Updated dependencies [00080ff]
   - @textile/core-storage@0.0.5
