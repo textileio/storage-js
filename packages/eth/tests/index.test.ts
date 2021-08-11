@@ -9,7 +9,7 @@ import {
   BridgeProvider__factory,
   BridgeRegistry__factory,
 } from "@textile/eth-storage-bridge";
-import { init, CoreAPI, Status } from "../src";
+import { init, CoreAPI } from "../src";
 
 use(solidity);
 
@@ -30,7 +30,7 @@ describe("eth/main", () => {
           cid: {
             "/": "fakeCid",
           },
-          status_code: Status.Batching,
+          status_code: "Batching",
         };
       },
       { overwriteRoutes: false }

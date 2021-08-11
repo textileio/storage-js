@@ -4,7 +4,7 @@ import fetchMock from "fetch-mock-jest";
 import { FormData, File } from "formdata-node";
 import { Encoder } from "form-data-encoder";
 import { Readable } from "stream";
-import { StorageAPI, Status, create } from "../src/storage";
+import { StorageAPI, create } from "../src/storage";
 import { createSigner } from "./utils";
 import { createToken } from "../src/token";
 
@@ -33,7 +33,7 @@ describe("core/storage", () => {
             cid: {
               "/": "fakeCid",
             },
-            status_code: Status.Batching,
+            status_code: "Batching",
           };
         },
         { overwriteRoutes: false }
@@ -46,7 +46,7 @@ describe("core/storage", () => {
             cid: {
               "/": "fakeCid",
             },
-            status_code: Status.Success,
+            status_code: "Success",
           },
           deals: [
             {
@@ -94,7 +94,7 @@ describe("core/storage", () => {
     const request = await storage.store(file as any);
     expect(request.id).to.equal("fakeId");
     expect(request.cid).to.deep.equal({ "/": "fakeCid" });
-    expect(request.status_code).to.equal(Status.Batching);
+    expect(request.status_code).to.equal("Batching");
   });
 
   test("should be able to store some data using streams", async () => {
@@ -107,7 +107,7 @@ describe("core/storage", () => {
 
     expect(request.id).to.equal("fakeId");
     expect(request.cid).to.deep.equal({ "/": "fakeCid" });
-    expect(request.status_code).to.equal(Status.Batching);
+    expect(request.status_code).to.equal("Batching");
   });
 
   test("should be able to get status of some data", async () => {
@@ -122,7 +122,7 @@ describe("core/storage", () => {
     const { id } = await storage.store(file as any);
 
     const { request, deals } = await storage.status(id);
-    expect(request).to.have.property("status_code", Status.Success);
+    expect(request.status_code === "Success").to.be.true;
     expect(deals).to.have.lengthOf(3);
   });
 });

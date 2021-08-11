@@ -3,23 +3,23 @@ import { isReadableStream } from "./utils";
 
 /**
  * Status is the status of a StorageRequest.
+ * * `Unknown` is the default value to an unitialized StorageRequest. This status must be
+ *   considered invalid in any real StorageRequest instance.
+ * * `Batching` indicates that the storage request is being batched.
+ * * `Preparing` indicates that the batch containing the data is being prepared.
+ * * `Auctioning` indicates that the batch containing the data is being auctioned.
+ * * `DealMaking` indicates that the data is in deal-making process.
+ * * `Success` indicates that the request was stored in Filecoin.
+ * * `Error indicates that there is some error handling the request.
  */
-export enum Status {
-  // Unknown is the default value to an uninitialized
-  // StorageRequest. This status must be considered invalid in any
-  // real StorageRequest instance.
-  Unknown = 0,
-  // Batching indicates that the storage request is being batched.
-  Batching,
-  // Preparing indicates that the batch containing the data is being prepared.
-  Preparing,
-  // Auctioning indicates that the batch containing the data is being auctioned.
-  Auctioning,
-  // DealMaking indicates that the data is in deal-making process.
-  DealMaking,
-  // Success indicates that the request was stored in Filecoin.
-  Success,
-}
+export type Status =
+  | "Unknown"
+  | "Batching"
+  | "Preparing"
+  | "Auctioning"
+  | "DealMaking"
+  | "Success"
+  | "Error";
 
 /**
  * Request is a request for storing data in a Provider.
