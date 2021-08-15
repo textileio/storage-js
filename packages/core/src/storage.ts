@@ -12,7 +12,7 @@ import { isReadableStream } from "./utils";
  * * `Success` indicates that the request was stored in Filecoin.
  * * `Error indicates that there is some error handling the request.
  */
-export type Status =
+type Status =
   | "Unknown"
   | "Batching"
   | "Preparing"
