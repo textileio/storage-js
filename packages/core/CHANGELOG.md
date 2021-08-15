@@ -1,5 +1,11 @@
 # @textile/core-storage
 
+## 0.0.8
+
+### Patch Changes
+
+- Status is no longer exported
+
 ## 0.0.7
 
 ### Patch Changes
