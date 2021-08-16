@@ -5,6 +5,8 @@
 ### Patch Changes
 
 - Updated dependencies [undefined]
+  - @textile/core-storage@0.0.9
+- Updated dependencies [undefined]
   - @textile/core-storage@0.0.8
 - Status is no longer exported
 - Updated dependencies [undefined]

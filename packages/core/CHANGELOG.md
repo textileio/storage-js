@@ -1,5 +1,11 @@
 # @textile/core-storage
 
+## 0.0.9
+
+### Patch Changes
+
+- Bug fix and version updates
+
 ## 0.0.8
 
 ### Patch Changes

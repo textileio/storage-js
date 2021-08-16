@@ -1,5 +1,13 @@
 # @textile/eth-storage
 
+## 0.0.9
+
+### Patch Changes
+
+- Bug fix and version updates
+- Updated dependencies [undefined]
+  - @textile/core-storage@0.0.9
+
 ## 0.0.8
 
 ### Patch Changes

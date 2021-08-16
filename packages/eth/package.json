@@ -1,6 +1,6 @@
 {
   "name": "@textile/eth-storage",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "ETH/Polygon provider implementation for Textile's Filecoin bridge system",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -24,7 +24,7 @@
     "src/**/*.ts"
   ],
   "dependencies": {
-    "@textile/core-storage": "^0.0.8",
+    "@textile/core-storage": "^0.0.9",
     "@textile/eth-storage-bridge": "^0.0.1",
     "ethers": "^5.4.3"
   },
