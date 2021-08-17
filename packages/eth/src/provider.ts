@@ -1,4 +1,5 @@
 import { Signer } from "ethers";
+import type { BigNumber } from "ethers";
 import {
   BridgeProvider__factory,
   BridgeProvider,
@@ -9,8 +10,8 @@ import { PROVIDER_ID, GAS, DEPOSIT } from "./utils";
 function initDeposit(contract: BridgeProvider, _account: string) {
   return {
     addDeposit: async (
-      account: string = _account,
-      amount = DEPOSIT
+      amount = DEPOSIT,
+      account: string = _account
     ): Promise<void> => {
       if (!account) throw new Error(`invalid account id: "${account}"`);
       return contract
@@ -40,7 +41,7 @@ export { ProviderAPI };
 export async function create(
   account: Signer,
   contractId: string = PROVIDER_ID
-): Promise<ProviderAPI> {
+): Promise<ProviderAPI<BigNumber>> {
   const contract = BridgeProvider__factory.connect(contractId, account);
   return initDeposit(contract, await account.getAddress());
 }

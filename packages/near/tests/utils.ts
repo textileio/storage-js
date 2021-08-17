@@ -32,12 +32,12 @@ interface FunctionCallOptions {
 const mockNear = (keyStore: keyStores.KeyStore) =>
   ({
     config: {
-      networkId: "networkId",
+      networkId: "localnet",
       contractName: "contractId",
       walletUrl: "http://example.com/wallet",
     },
     connection: {
-      networkId: "networkId",
+      networkId: "localnet",
       signer: new InMemorySigner(keyStore),
     },
     async account(accountId: string) {

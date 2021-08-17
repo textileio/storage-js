@@ -1,7 +1,8 @@
 import { expect } from "chai";
 import { InMemorySigner, keyStores, utils } from "near-api-js";
+import { encode as base58btc } from "bs58";
 import { decodeURLSafe } from "@stablelib/base64";
-import { create, encodeKey } from "../src/token";
+import { create } from "../src/token";
 import { createHash } from "crypto";
 import { verify } from "@stablelib/ed25519";
 
@@ -11,9 +12,9 @@ const encoder = new TextEncoder();
 const encode = encoder.encode.bind(encoder);
 
 const signer = new InMemorySigner(new keyStores.InMemoryKeyStore());
-const accountId = "account.id";
-const networkId = "network.id";
-const aud = "broker.id";
+const accountId = "account";
+const networkId = "localnet";
+const aud = "provider";
 
 let publicKey: utils.PublicKey;
 
@@ -38,7 +39,7 @@ describe("near/token", () => {
       networkId,
       aud,
     });
-    const kid = encodeKey(publicKey.data);
+    const kid = `${"near:localnet"}:${base58btc(publicKey.data)}`;
     const [h] = token.split(".");
     const header = JSON.parse(decode(decodeURLSafe(h)));
     expect(header).to.have.property("alg", "NEAR");
@@ -47,7 +48,6 @@ describe("near/token", () => {
   });
 
   test("jws has correct payload", async () => {
-    const kid = encodeKey(publicKey.data);
     const token = await create(signer, {
       accountId,
       networkId,
@@ -55,7 +55,7 @@ describe("near/token", () => {
     });
     const [, p] = token.split(".");
     const payload = JSON.parse(decode(decodeURLSafe(p)));
-    expect(payload).to.have.property("iss", kid);
+    expect(payload).to.have.property("iss", accountId);
     expect(payload).to.have.property("sub", accountId);
     expect(payload).to.have.property("aud", aud);
     const { exp, iat } = payload;

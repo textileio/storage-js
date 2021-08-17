@@ -1,5 +1,5 @@
 import { expect, use } from "chai";
-import { utils } from "ethers";
+import { BigNumber, utils } from "ethers";
 import { MockProvider, solidity } from "ethereum-waffle";
 import fetchMock from "fetch-mock-jest";
 import { FormData } from "formdata-node";
@@ -16,7 +16,7 @@ use(solidity);
 const eth = new MockProvider();
 const [wallet, external] = eth.getWallets();
 
-let contract: CoreAPI;
+let contract: CoreAPI<BigNumber>;
 
 describe("eth/main", () => {
   jest.setTimeout(20000);
@@ -54,8 +54,8 @@ describe("eth/main", () => {
   test("initialize, deposit, and store", async () => {
     jest.setTimeout(10000);
     await contract.addDeposit(
-      external.address,
-      utils.parseUnits("500", "gwei")
+      utils.parseUnits("500", "gwei"),
+      external.address
     );
 
     const formData = new FormData();

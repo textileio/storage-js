@@ -1,5 +1,5 @@
 import { expect, use } from "chai";
-import { utils } from "ethers";
+import { BigNumber, utils } from "ethers";
 import { MockProvider, solidity } from "ethereum-waffle";
 import { BridgeProvider__factory } from "@textile/eth-storage-bridge";
 import { create, ProviderAPI } from "../src/provider";
@@ -9,7 +9,7 @@ use(solidity);
 const eth = new MockProvider();
 const [wallet, external] = eth.getWallets();
 
-let contract: ProviderAPI;
+let contract: ProviderAPI<BigNumber>;
 
 describe("eth/provider", () => {
   jest.setTimeout(20000);
@@ -40,7 +40,7 @@ describe("eth/provider", () => {
 
   test("releaseDeposits", async () => {
     const addr = await external.getAddress();
-    await contract.addDeposit(addr, utils.parseUnits("500", "gwei"));
+    await contract.addDeposit(utils.parseUnits("500", "gwei"), addr);
 
     await eth.send("evm_increaseTime", [6]);
     await eth.send("evm_mine", []);
@@ -52,7 +52,7 @@ describe("eth/provider", () => {
 
   test("releaseDeposit", async () => {
     const addr = await external.getAddress();
-    await contract.addDeposit(addr, utils.parseUnits("500", "gwei"));
+    await contract.addDeposit(utils.parseUnits("500", "gwei"), addr);
 
     await eth.send("evm_increaseTime", [6]);
     await eth.send("evm_mine", []);

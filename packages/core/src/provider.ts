@@ -1,5 +1,3 @@
-import type { BigNumber } from "ethers";
-
 export interface AddDeposit {
   sender: string;
   account: string;
@@ -11,8 +9,8 @@ export interface ReleaseDeposit {
   amount: number;
 }
 
-export interface ProviderAPI {
-  addDeposit: (account?: string, amount?: BigNumber) => Promise<void>;
+export interface ProviderAPI<T> {
+  addDeposit: (amount?: T, account?: string) => Promise<void>;
   releaseDeposit: (account?: string) => Promise<void>;
   releaseDeposits: () => Promise<void>;
   hasDeposit: (account?: string) => Promise<boolean>;
