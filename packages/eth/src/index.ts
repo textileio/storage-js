@@ -1,4 +1,4 @@
-import type { Signer } from "ethers";
+import type { BigNumber, Signer } from "ethers";
 import type {
   CoreAPI,
   StandardClaims,
@@ -48,7 +48,7 @@ Data will not be available permanently on either Filecoin or IPFS. See the full 
 export async function init(
   account: Signer,
   opts: InitOptions & StandardClaims = {}
-): Promise<CoreAPI> {
+): Promise<CoreAPI<BigNumber>> {
   // TODO: Eventually remove this in favor of wallet singing information?
   console.info(TOS);
 

@@ -24,13 +24,16 @@ interface DepositContract extends NearContract {
 
 function initDeposit(contract: DepositContract, _account: string) {
   return {
-    addDeposit: async (account: string = _account): Promise<void> => {
+    addDeposit: async (
+      amount: string = DEPOSIT,
+      account: string = _account
+    ): Promise<void> => {
       if (!account) throw new Error(`invalid account id: "${account}"`);
       return contract
         .addDeposit({
           args: { account },
           gas: GAS,
-          amount: DEPOSIT,
+          amount,
         })
         .then(() => undefined);
     },
@@ -59,7 +62,7 @@ export { ProviderAPI };
 export async function create(
   account: Account,
   contractId: string = CONTRACT_ID
-): Promise<ProviderAPI> {
+): Promise<ProviderAPI<string>> {
   const contract = new NearContract(account, contractId, {
     // View methods are read-only – they don't modify the state, but usually return some value
     viewMethods: ["hasDeposit", "apiEndpoint"],

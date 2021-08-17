@@ -34,7 +34,7 @@ describe("near/utils", () => {
         },
       },
     });
-    walletConnection = mocks.Provider(keyStore, "fakeAccount.networkId");
+    walletConnection = mocks.Provider(keyStore, "fakeAccount.localnet");
   });
   describe("can request sign in", () => {
     beforeEach(() => keyStore.clear());
@@ -47,14 +47,14 @@ describe("near/utils", () => {
     });
 
     afterEach(async () => {
-      const accounts = await keyStore.getAccounts("networkId");
+      const accounts = await keyStore.getAccounts("localnet");
       expect(accounts).to.have.length(1);
       expect(accounts[0]).to.match(/^pending_key.+/);
       const url = new URL(lastRedirectUrl);
       const params = url.searchParams;
       const publicKey = params.get("public_key");
       expect(publicKey).to.equal(
-        (await keyStore.getKey("networkId", accounts[0]))
+        (await keyStore.getKey("localnet", accounts[0]))
           .getPublicKey()
           .toString()
       );

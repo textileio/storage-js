@@ -48,7 +48,7 @@ Data will not be available permanently on either Filecoin or IPFS. See the full 
 export async function init(
   account: Account,
   opts: InitOptions & StandardClaims = {}
-): Promise<CoreAPI> {
+): Promise<CoreAPI<string>> {
   // TODO: Eventually remove this in favor of wallet singing information?
   console.info(TOS);
 

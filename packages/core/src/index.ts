@@ -7,7 +7,7 @@ import { StorageAPI } from "./storage";
 import { ProviderAPI } from "./provider";
 import { RegistryAPI } from "./registry";
 
-export type CoreAPI = StorageAPI & ProviderAPI & RegistryAPI;
+export type CoreAPI<T> = StorageAPI & ProviderAPI<T> & RegistryAPI;
 
 /**
  * Options for init configuration

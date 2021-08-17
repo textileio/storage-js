@@ -10,7 +10,7 @@ globalThis.document = { title: "documentTitle" } as Document;
 
 const keyStore = new keyStores.InMemoryKeyStore();
 const walletConnection = mocks.Provider(keyStore, "account.id");
-let contract: ProviderAPI;
+let contract: ProviderAPI<string>;
 
 Object.assign(globalThis.window, {
   location: {
