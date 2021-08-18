@@ -26,7 +26,7 @@ jobs:
       - name: Setup Node Environment ⬢
         uses: actions/setup-node@v1
         with:
-          node-version: 12
+          node-version: 14
 
       - name: Upgrade NPM ⚒️
         run: npm i -g npm@7
