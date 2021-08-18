@@ -32,7 +32,6 @@ describe("eth/token", () => {
 
   test("jws has correct payload", async () => {
     const addr = await signer.getAddress();
-    const kid = `eth:1337:${addr}`;
     const token = await create(signer, { aud });
     const [, p] = token.split(".");
     const payload = JSON.parse(decode(decodeURLSafe(p)));

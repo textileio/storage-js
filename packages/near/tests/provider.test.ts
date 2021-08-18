@@ -1,7 +1,6 @@
 import { Runner } from "near-runner";
 import { expect } from "chai";
 import { create } from "../src/provider";
-import { providers } from "near-api-js";
 
 describe("eth/provider", () => {
   let runner: Runner;
