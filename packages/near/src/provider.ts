@@ -1,6 +1,6 @@
 import { Contract as NearContract, Account } from "near-api-js";
 import { ProviderAPI } from "@textile/core-storage";
-import { DEPOSIT, GAS, CONTRACT_ID } from "./utils";
+import { DEPOSIT, GAS, PROVIDER_ID } from "./utils";
 
 interface DepositContract extends NearContract {
   addDeposit: (args: {
@@ -61,7 +61,7 @@ export { ProviderAPI };
 
 export async function create(
   account: Account,
-  contractId: string = CONTRACT_ID
+  contractId: string = PROVIDER_ID
 ): Promise<ProviderAPI<string>> {
   const contract = new NearContract(account, contractId, {
     // View methods are read-only – they don't modify the state, but usually return some value

@@ -1,5 +1,11 @@
 # @textile/near-storage
 
+## 7.0.1
+
+### Patch Changes
+
+- Specify default contract names
+
 ## 7.0.0
 
 ### Major Changes
