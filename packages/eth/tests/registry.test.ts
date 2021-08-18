@@ -23,6 +23,7 @@ describe("eth/registry", () => {
     test("listProviders", async () => {
       const res = await contract.listProviders();
       expect(res).to.have.lengthOf(1);
+      expect(res).to.contain(wallet.address);
     });
   });
 });

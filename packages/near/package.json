@@ -30,6 +30,7 @@
     "near-api-js": "^0.42.0"
   },
   "devDependencies": {
-    "localstorage-memory": "^1.0.3"
+    "localstorage-memory": "^1.0.3",
+    "near-runner": "^0.4.0"
   }
 }

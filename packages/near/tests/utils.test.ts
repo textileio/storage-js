@@ -1,19 +1,18 @@
+import { Runner } from "near-runner";
 import { expect } from "chai";
-import { WalletConnection, keyStores } from "near-api-js";
-
 import { requestSignIn } from "../src/utils";
-import { mocks } from "./utils";
+import { WalletConnection, Near } from "near-api-js";
 
 globalThis.window = globalThis as Window & typeof globalThis;
 globalThis.document = { title: "documentTitle" } as Document;
 
-const keyStore = new keyStores.InMemoryKeyStore();
-let walletConnection: WalletConnection;
-let lastRedirectUrl: string;
-let history: [unknown, string, string | null | undefined][] = [];
-
 describe("near/utils", () => {
-  beforeEach(async () => {
+  jest.setTimeout(60000);
+  let runner: Runner;
+  let lastRedirectUrl: string;
+  let history: [unknown, string, string | null | undefined][] = [];
+
+  beforeAll(async () => {
     lastRedirectUrl = "";
     history = [];
     Object.assign(globalThis.window, {
@@ -34,37 +33,40 @@ describe("near/utils", () => {
         },
       },
     });
-    walletConnection = mocks.Provider(keyStore, "fakeAccount.localnet");
+    console.log(`Running in: ${Runner.getNetworkFromEnv()}`);
+    runner = await Runner.create(async ({ runtime }) => ({
+      alice: await runtime.createAccount("alice"),
+    }));
   });
-  describe("can request sign in", () => {
-    beforeEach(() => keyStore.clear());
 
-    test("wraps the wallet connection sign in", async () => {
-      return await requestSignIn(walletConnection, {
+  test("requestSignIn", async () => {
+    await runner.run(async ({ alice }) => {
+      const wallet = new WalletConnection(
+        {
+          connection: alice.connection,
+          config: {
+            networkId: "test.near",
+            walletUrl: "http://example.com/wallet",
+          },
+          account: () => alice.najAccount,
+        } as unknown as Near,
+        "prefix"
+      );
+      await requestSignIn(wallet, {
         successUrl: "http://example.com/success",
         failureUrl: "http://example.com/fail",
       });
-    });
-
-    afterEach(async () => {
-      const accounts = await keyStore.getAccounts("localnet");
+      const accounts = await alice.keyStore.getAccounts("test.near");
       expect(accounts).to.have.length(1);
       expect(accounts[0]).to.match(/^pending_key.+/);
       const url = new URL(lastRedirectUrl);
       const params = url.searchParams;
       const publicKey = params.get("public_key");
       expect(publicKey).to.equal(
-        (await keyStore.getKey("localnet", accounts[0]))
+        (await alice.keyStore.getKey("test.near", accounts[0]))
           .getPublicKey()
           .toString()
       );
-    });
-  });
-
-  describe("can request sign out", () => {
-    test("uses the default wallet connection sign out", () => {
-      // TODO: Right now, this is just pass or fail, should test properly with shims etc
-      walletConnection.signOut();
     });
   });
 });

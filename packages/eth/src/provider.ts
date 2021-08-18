@@ -11,24 +11,28 @@ function initDeposit(contract: BridgeProvider, _account: string) {
   return {
     addDeposit: async (
       amount = DEPOSIT,
-      account: string = _account
+      depositee: string = _account
     ): Promise<void> => {
-      if (!account) throw new Error(`invalid account id: "${account}"`);
+      if (!depositee) throw new Error(`invalid depositee id: "${depositee}"`);
       return contract
-        .addDeposit(account, {
+        .addDeposit(depositee, {
           value: amount,
         })
-        .then(() => undefined);
+        .then((tx) => tx.wait().then(() => undefined));
     },
-    releaseDeposit: async (account: string = _account): Promise<void> => {
-      return contract.releaseDeposit(account).then(() => undefined);
+    releaseDeposit: async (depositee: string = _account): Promise<void> => {
+      return contract
+        .releaseDeposit(depositee)
+        .then((tx) => tx.wait().then(() => undefined));
     },
     releaseDeposits: async (): Promise<void> => {
-      return contract.releaseDeposits({ gasLimit: GAS }).then(() => undefined);
+      return contract
+        .releaseDeposits({ gasLimit: GAS })
+        .then((tx) => tx.wait().then(() => undefined));
     },
-    hasDeposit: async (account: string = _account): Promise<boolean> => {
-      if (!account) throw new Error(`invalid account id: "${account}"`);
-      return contract.hasDeposit(account);
+    hasDeposit: async (depositee: string = _account): Promise<boolean> => {
+      if (!depositee) throw new Error(`invalid depositee id: "${depositee}"`);
+      return contract.hasDeposit(depositee);
     },
     apiEndpoint: async (): Promise<string> => {
       return contract.apiEndpoint();
