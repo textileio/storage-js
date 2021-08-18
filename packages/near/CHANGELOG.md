@@ -1,5 +1,16 @@
 # @textile/near-storage
 
+## 7.0.0
+
+### Major Changes
+
+- 2101899: Updates for NEAR mainnet, changes to core interface, optimizations, etc
+
+### Patch Changes
+
+- Updated dependencies [2101899]
+  - @textile/core-storage@0.1.0
+
 ## 6.0.3
 
 ### Patch Changes
