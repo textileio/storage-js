@@ -10,6 +10,7 @@
     "strict": true /* Enable all strict type-checking options. */,
     "moduleResolution": "node",
     "esModuleInterop": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "skipLibCheck": true
   }
 }
