@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>ReleaseDeposit | @textile/storage</title>
+	<title>DepositAdded | @textile/storage</title>
 	<meta name="description" content="Documentation for @textile/storage">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -55,13 +55,13 @@
 					<a href="../modules.html">@textile/storage</a>
 				</li>
 				<li>
-					<a href="../modules/_textile_eth_storage.html">@textile/eth-storage</a>
+					<a href="../modules/_textile_near_storage.html">@textile/near-storage</a>
 				</li>
 				<li>
-					<a href="_textile_eth_storage.ReleaseDeposit.html">ReleaseDeposit</a>
+					<a href="_textile_near_storage.DepositAdded.html">DepositAdded</a>
 				</li>
 			</ul>
-			<h1>Interface ReleaseDeposit</h1>
+			<h1>Interface DepositAdded</h1>
 		</div>
 	</div>
 </header>
@@ -72,7 +72,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">ReleaseDeposit</span>
+						<span class="target">DepositAdded</span>
 					</li>
 				</ul>
 			</section>
@@ -83,8 +83,9 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_textile_eth_storage.ReleaseDeposit.html#account" class="tsd-kind-icon">account</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_textile_eth_storage.ReleaseDeposit.html#amount" class="tsd-kind-icon">amount</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_textile_near_storage.DepositAdded.html#amount" class="tsd-kind-icon">amount</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_textile_near_storage.DepositAdded.html#depositee" class="tsd-kind-icon">depositee</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_textile_near_storage.DepositAdded.html#depositor" class="tsd-kind-icon">depositor</a></li>
 							</ul>
 						</section>
 					</div>
@@ -93,22 +94,32 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="account" class="tsd-anchor"></a>
-					<h3>account</h3>
-					<div class="tsd-signature tsd-kind-icon">account<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in core/dist/provider.d.ts:8</li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="amount" class="tsd-anchor"></a>
 					<h3>amount</h3>
 					<div class="tsd-signature tsd-kind-icon">amount<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in core/dist/provider.d.ts:9</li>
+							<li>Defined in core/dist/provider.d.ts:4</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="depositee" class="tsd-anchor"></a>
+					<h3>depositee</h3>
+					<div class="tsd-signature tsd-kind-icon">depositee<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in core/dist/provider.d.ts:3</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="depositor" class="tsd-anchor"></a>
+					<h3>depositor</h3>
+					<div class="tsd-signature tsd-kind-icon">depositor<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in core/dist/provider.d.ts:2</li>
 						</ul>
 					</aside>
 				</section>
@@ -123,10 +134,10 @@
 					<li class=" tsd-kind-module">
 						<a href="../modules/_textile_core_storage.html">@textile/core-<wbr>storage</a>
 					</li>
-					<li class="current tsd-kind-module">
+					<li class=" tsd-kind-module">
 						<a href="../modules/_textile_eth_storage.html">@textile/eth-<wbr>storage</a>
 					</li>
-					<li class=" tsd-kind-module">
+					<li class="current tsd-kind-module">
 						<a href="../modules/_textile_near_storage.html">@textile/near-<wbr>storage</a>
 					</li>
 				</ul>
@@ -134,79 +145,88 @@
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_textile_eth_storage.AddDeposit.html" class="tsd-kind-icon">Add<wbr>Deposit</a>
+						<a href="_textile_near_storage.AccountOptions.html" class="tsd-kind-icon">Account<wbr>Options</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_textile_eth_storage.Deal.html" class="tsd-kind-icon">Deal</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_textile_eth_storage.Header.html" class="tsd-kind-icon">Header</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_textile_eth_storage.InitOptions.html" class="tsd-kind-icon">Init<wbr>Options</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_textile_eth_storage.OpenOptions.html" class="tsd-kind-icon">Open<wbr>Options</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_textile_eth_storage.ProviderAPI.html" class="tsd-kind-icon">ProviderAPI</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_textile_eth_storage.RegistryAPI.html" class="tsd-kind-icon">RegistryAPI</a>
+						<a href="_textile_near_storage.Deal.html" class="tsd-kind-icon">Deal</a>
 					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-parent-kind-module">
-						<a href="_textile_eth_storage.ReleaseDeposit.html" class="tsd-kind-icon">Release<wbr>Deposit</a>
+						<a href="_textile_near_storage.DepositAdded.html" class="tsd-kind-icon">Deposit<wbr>Added</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_textile_eth_storage.ReleaseDeposit.html#account" class="tsd-kind-icon">account</a>
+								<a href="_textile_near_storage.DepositAdded.html#amount" class="tsd-kind-icon">amount</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_textile_eth_storage.ReleaseDeposit.html#amount" class="tsd-kind-icon">amount</a>
+								<a href="_textile_near_storage.DepositAdded.html#depositee" class="tsd-kind-icon">depositee</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_textile_near_storage.DepositAdded.html#depositor" class="tsd-kind-icon">depositor</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
 					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_textile_eth_storage.Request.html" class="tsd-kind-icon">Request</a>
+						<a href="_textile_near_storage.DepositReleased.html" class="tsd-kind-icon">Deposit<wbr>Released</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_textile_eth_storage.RequestInfo.html" class="tsd-kind-icon">Request<wbr>Info</a>
+						<a href="_textile_near_storage.Header.html" class="tsd-kind-icon">Header</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_textile_eth_storage.Signer.html" class="tsd-kind-icon">Signer</a>
+						<a href="_textile_near_storage.InitOptions.html" class="tsd-kind-icon">Init<wbr>Options</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_textile_eth_storage.StandardClaims.html" class="tsd-kind-icon">Standard<wbr>Claims</a>
+						<a href="_textile_near_storage.OpenOptions.html" class="tsd-kind-icon">Open<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-module tsd-has-type-parameter">
+						<a href="_textile_near_storage.ProviderAPI.html" class="tsd-kind-icon">ProviderAPI</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_textile_eth_storage.StorageAPI.html" class="tsd-kind-icon">StorageAPI</a>
+						<a href="_textile_near_storage.RegistryAPI.html" class="tsd-kind-icon">RegistryAPI</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_textile_eth_storage.StorageConfig.html" class="tsd-kind-icon">Storage<wbr>Config</a>
+						<a href="_textile_near_storage.Request.html" class="tsd-kind-icon">Request</a>
 					</li>
-					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
-						<a href="../modules/_textile_eth_storage.html#CoreAPI" class="tsd-kind-icon">CoreAPI</a>
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
+						<a href="_textile_near_storage.RequestInfo.html" class="tsd-kind-icon">Request<wbr>Info</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
+						<a href="_textile_near_storage.SignInOptions.html" class="tsd-kind-icon">Sign<wbr>InOptions</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
+						<a href="_textile_near_storage.Signer.html" class="tsd-kind-icon">Signer</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
+						<a href="_textile_near_storage.StandardClaims.html" class="tsd-kind-icon">Standard<wbr>Claims</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
+						<a href="_textile_near_storage.StorageAPI.html" class="tsd-kind-icon">StorageAPI</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
+						<a href="_textile_near_storage.StorageConfig.html" class="tsd-kind-icon">Storage<wbr>Config</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module tsd-has-type-parameter">
+						<a href="../modules/_textile_near_storage.html#CoreAPI" class="tsd-kind-icon">CoreAPI</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-parent-kind-module">
-						<a href="../modules/_textile_eth_storage.html#DEPOSIT" class="tsd-kind-icon">DEPOSIT</a>
+						<a href="../modules/_textile_near_storage.html#CONTRACT_ID" class="tsd-kind-icon">CONTRACT_<wbr>ID</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-parent-kind-module">
-						<a href="../modules/_textile_eth_storage.html#GAS" class="tsd-kind-icon">GAS</a>
+						<a href="../modules/_textile_near_storage.html#DEPOSIT" class="tsd-kind-icon">DEPOSIT</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-parent-kind-module">
-						<a href="../modules/_textile_eth_storage.html#PROVIDER_ID" class="tsd-kind-icon">PROVIDER_<wbr>ID</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-parent-kind-module">
-						<a href="../modules/_textile_eth_storage.html#REGISTRY_ID" class="tsd-kind-icon">REGISTRY_<wbr>ID</a>
+						<a href="../modules/_textile_near_storage.html#GAS" class="tsd-kind-icon">GAS</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
-						<a href="../modules/_textile_eth_storage.html#createToken" class="tsd-kind-icon">create<wbr>Token</a>
+						<a href="../modules/_textile_near_storage.html#createToken" class="tsd-kind-icon">create<wbr>Token</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
-						<a href="../modules/_textile_eth_storage.html#init" class="tsd-kind-icon">init</a>
+						<a href="../modules/_textile_near_storage.html#init" class="tsd-kind-icon">init</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="../modules/_textile_near_storage.html#requestSignIn" class="tsd-kind-icon">request<wbr>Sign<wbr>In</a>
 					</li>
 				</ul>
 			</nav>
@@ -220,10 +240,11 @@
 			<ul class="tsd-legend">
 				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
 				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
-				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
 				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
 			</ul>
 		</div>
