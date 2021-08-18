@@ -1,5 +1,11 @@
 # @textile/near-storage
 
+## 7.0.2
+
+### Patch Changes
+
+- Fix how we requestLogIn
+
 ## 7.0.1
 
 ### Patch Changes
