@@ -1,5 +1,11 @@
 # @textile/core-storage
 
+## 0.1.0
+
+### Minor Changes
+
+- 2101899: Updates for NEAR mainnet, changes to core interface, optimizations, etc
+
 ## 0.0.9
 
 ### Patch Changes
