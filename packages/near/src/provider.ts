@@ -1,45 +1,45 @@
 import { Contract as NearContract, Account } from "near-api-js";
-import { ProviderAPI, AddDeposit, ReleaseDeposit } from "@textile/core-storage";
+import { ProviderAPI } from "@textile/core-storage";
 import { DEPOSIT, GAS, CONTRACT_ID } from "./utils";
 
 interface DepositContract extends NearContract {
   addDeposit: (args: {
-    args: { account?: string };
+    args: { depositee?: string };
     gas?: string;
     amount?: string;
-  }) => Promise<AddDeposit>;
+  }) => Promise<void>;
   releaseDeposit: (args: {
-    args: { account?: string };
+    args: { depositee?: string };
     gas?: string;
     amount?: string;
-  }) => Promise<ReleaseDeposit>;
+  }) => Promise<void>;
   releaseDeposits: (args: {
     args: unknown;
     gas?: string;
     amount?: string;
   }) => Promise<void>;
-  hasDeposit: (args: { account: string }) => Promise<boolean>;
+  hasDeposit: (args: { depositee: string }) => Promise<boolean>;
   apiEndpoint: (args: unknown) => Promise<string>;
 }
 
-function initDeposit(contract: DepositContract, _account: string) {
+function initDeposit(contract: DepositContract, account: string) {
   return {
     addDeposit: async (
       amount: string = DEPOSIT,
-      account: string = _account
+      depositee: string = account
     ): Promise<void> => {
-      if (!account) throw new Error(`invalid account id: "${account}"`);
+      if (!depositee) throw new Error(`invalid depositee id: "${depositee}"`);
       return contract
         .addDeposit({
-          args: { account },
+          args: { depositee },
           gas: GAS,
           amount,
         })
         .then(() => undefined);
     },
-    releaseDeposit: async (account: string = _account): Promise<void> => {
+    releaseDeposit: async (depositee: string = account): Promise<void> => {
       return contract
-        .releaseDeposit({ args: { account }, gas: GAS })
+        .releaseDeposit({ args: { depositee }, gas: GAS })
         .then(() => undefined);
     },
     releaseDeposits: async (): Promise<void> => {
@@ -47,9 +47,9 @@ function initDeposit(contract: DepositContract, _account: string) {
         .releaseDeposits({ args: {}, gas: GAS })
         .then(() => undefined);
     },
-    hasDeposit: async (account: string = _account): Promise<boolean> => {
-      if (!account) throw new Error(`invalid account id: "${account}"`);
-      return contract.hasDeposit({ account });
+    hasDeposit: async (depositee: string = account): Promise<boolean> => {
+      if (!depositee) throw new Error(`invalid depositee id: "${depositee}"`);
+      return contract.hasDeposit({ depositee });
     },
     apiEndpoint: async (): Promise<string> => {
       return contract.apiEndpoint({});

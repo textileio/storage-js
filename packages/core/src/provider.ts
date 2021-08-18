@@ -1,18 +1,19 @@
-export interface AddDeposit {
-  sender: string;
-  account: string;
+export interface DepositAdded {
+  depositor: string;
+  depositee: string;
   amount: number;
 }
 
-export interface ReleaseDeposit {
-  account: string;
+export interface DepositReleased {
+  depositor: string;
+  depositee: string;
   amount: number;
 }
 
 export interface ProviderAPI<T> {
-  addDeposit: (amount?: T, account?: string) => Promise<void>;
-  releaseDeposit: (account?: string) => Promise<void>;
+  addDeposit: (amount?: T, depositee?: string) => Promise<void>;
+  releaseDeposit: (depositee?: string) => Promise<void>;
   releaseDeposits: () => Promise<void>;
-  hasDeposit: (account?: string) => Promise<boolean>;
+  hasDeposit: (depositee?: string) => Promise<boolean>;
   apiEndpoint: () => Promise<string>;
 }

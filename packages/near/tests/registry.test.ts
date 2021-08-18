@@ -1,39 +1,30 @@
+import { Runner } from "near-runner";
 import { expect } from "chai";
-import { keyStores } from "near-api-js";
-
-import { requestSignIn } from "../src/utils";
-import { mocks } from "./utils";
 import { create } from "../src/registry";
 
-globalThis.window = globalThis.global as Window & typeof globalThis;
-globalThis.document = { title: "documentTitle" } as Document;
-
-const keyStore = new keyStores.InMemoryKeyStore();
-const walletConnection = mocks.Registry(keyStore, "account.id");
-const contract = create(walletConnection.account(), "contract.id");
-
-Object.assign(globalThis.window, {
-  location: {
-    href: "http://example.com/location",
-    assign(url: string) {
-      this.href = url;
-    },
-  },
-});
-
 describe("near/registry", () => {
-  describe("can interact with smart contract view methods", () => {
-    beforeEach(async () => {
-      keyStore.clear();
-      await requestSignIn(walletConnection, {
-        successUrl: "http://example.com/success",
-        failureUrl: "http://example.com/fail",
-      });
-    });
+  let runner: Runner;
+  jest.setTimeout(60000);
 
-    test("listProviders", async () => {
-      const res = await contract.listProviders();
-      expect(res).to.have.lengthOf(1);
+  beforeAll(async () => {
+    console.log(`Running in: ${Runner.getNetworkFromEnv()}`);
+    runner = await Runner.create(async ({ runtime }) => ({
+      registry: await runtime.createAndDeploy(
+        "bridge-registry",
+        `${__dirname}/builds/registry.wasm`
+      ),
+      alice: await runtime.createAccount("alice"),
+    }));
+  });
+
+  test("listProviders", async () => {
+    await runner.run(async ({ registry, alice }) => {
+      await registry.call(registry, "addProvider", {
+        provider: "provider.test.near",
+      });
+      const contract = create(alice.najAccount, "bridge-registry.test.near");
+      const providers = await contract.listProviders();
+      expect(providers).to.contain("provider.test.near");
     });
   });
 });

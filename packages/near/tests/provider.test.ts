@@ -1,67 +1,93 @@
+import { Runner } from "near-runner";
 import { expect } from "chai";
-import { keyStores } from "near-api-js";
+import { create } from "../src/provider";
+import { providers } from "near-api-js";
 
-import { requestSignIn } from "../src/utils";
-import { mocks } from "./utils";
-import { create, ProviderAPI } from "../src/provider";
+describe("eth/provider", () => {
+  let runner: Runner;
+  jest.setTimeout(60000);
 
-globalThis.window = globalThis.global as Window & typeof globalThis;
-globalThis.document = { title: "documentTitle" } as Document;
-
-const keyStore = new keyStores.InMemoryKeyStore();
-const walletConnection = mocks.Provider(keyStore, "account.id");
-let contract: ProviderAPI<string>;
-
-Object.assign(globalThis.window, {
-  location: {
-    href: "http://example.com/location",
-    assign(url: string) {
-      this.href = url;
-    },
-  },
-});
-
-describe("near/provider", () => {
   beforeAll(async () => {
-    contract = await create(walletConnection.account(), "contract.id");
+    console.log(`Running in: ${Runner.getNetworkFromEnv()}`);
+    runner = await Runner.create(async ({ runtime }) => ({
+      provider: await runtime.createAndDeploy(
+        "bridge-provider",
+        `${__dirname}/builds/provider.wasm`
+      ),
+      alice: await runtime.createAccount("alice"),
+    }));
   });
-  describe("can interact with smart contract view methods", () => {
-    beforeEach(async () => {
-      keyStore.clear();
-      await requestSignIn(walletConnection, {
-        successUrl: "http://example.com/success",
-        failureUrl: "http://example.com/fail",
-      });
-    });
-
-    test("hasDeposit", async () => {
+  test("hasDeposit", async () => {
+    await runner.run(async ({ alice }) => {
+      const contract = await create(
+        alice.najAccount,
+        "bridge-provider.test.near"
+      );
       const ok = await contract.hasDeposit();
       expect(ok).to.be.false;
     });
+  });
 
-    test("apiEndpoint", async () => {
+  test("apiEndpoint", async () => {
+    await runner.run(async ({ provider, alice }) => {
+      await provider.call(provider, "setApiEndpoint", {
+        a: "https://provider.io",
+      });
+      const contract = await create(
+        alice.najAccount,
+        "bridge-provider.test.near"
+      );
       const str = await contract.apiEndpoint();
       expect(str).to.equal("https://provider.io");
     });
   });
 
-  describe("can interact with smart contract change methods", () => {
-    test("addDeposit", async () => {
+  test("addDeposit", async () => {
+    await runner.run(async ({ alice }) => {
+      const contract = await create(
+        alice.najAccount,
+        "bridge-provider.test.near"
+      );
       await contract.addDeposit();
       expect(await contract.hasDeposit()).to.be.true;
     });
+  });
 
-    test("releaseDeposits", async () => {
-      const res = await contract.releaseDeposits();
-      expect(res).to.be.undefined;
-      expect(await contract.hasDeposit()).to.be.false;
+  test("releaseDeposits", async () => {
+    await runner.run(async ({ alice }) => {
+      const contract = await create(
+        alice.najAccount,
+        "bridge-provider.test.near"
+      );
+      await contract.addDeposit("3000000000");
+      let ok = await contract.hasDeposit("alice.test.near");
+      expect(ok).to.be.true;
+
+      // Sleep
+      await new Promise((resolve) => setTimeout(resolve, 3000));
+
+      await contract.releaseDeposits();
+      ok = await contract.hasDeposit();
+      expect(ok).to.be.false;
     });
+  });
 
-    test("releaseDeposit", async () => {
-      await contract.addDeposit();
-      const res = await contract.releaseDeposit();
-      expect(res).to.be.undefined;
-      expect(await contract.hasDeposit()).to.be.false;
+  test("releaseDeposit", async () => {
+    await runner.run(async ({ alice }) => {
+      const contract = await create(
+        alice.najAccount,
+        "bridge-provider.test.near"
+      );
+      await contract.addDeposit("3000000000", "alice.test.near");
+      let ok = await contract.hasDeposit();
+      expect(ok).to.be.true;
+
+      // Sleep
+      await new Promise((resolve) => setTimeout(resolve, 3000));
+
+      await contract.releaseDeposit("alice.test.near");
+      ok = await contract.hasDeposit("alice.test.near");
+      expect(ok).to.be.false;
     });
   });
 });
