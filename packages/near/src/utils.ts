@@ -31,6 +31,7 @@ export async function requestSignIn(
   connection: WalletConnection,
   { successUrl, failureUrl, contractId }: SignInOptions = {}
 ): Promise<void> {
+  if (connection.isSignedIn()) return;
   if (!contractId) contractId = PROVIDER_ID;
   return connection.requestSignIn({ contractId, successUrl, failureUrl });
 }
