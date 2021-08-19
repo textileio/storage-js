@@ -35,8 +35,6 @@ npm i @textile/eth-storage
 
 ## Usage
 
-**Currently, the published `@textile/near-storage` library does not conform to the `@textile/core-storage` API. See https://github.com/textileio/near-storage-js for the current published version.**
-
 ### NEAR
 
 ```typescript
