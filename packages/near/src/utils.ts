@@ -1,7 +1,7 @@
 import { WalletConnection } from "near-api-js";
 
-export const REGISTRY_ID = "bridge-registry.testnet";
-export const PROVIDER_ID = "bridge-provider.testnet";
+export const REGISTRY_ID = "storage-bridge-registry.testnet";
+export const PROVIDER_ID = "storage-bridge-validator.testnet";
 export const DEPOSIT = "250000000000000000000000";
 export const GAS = "300000000000000"; // 3e13
 
