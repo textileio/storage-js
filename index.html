@@ -102,6 +102,7 @@
 				<pre><code class="language-typescript"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">connect</span><span style="color: #000000">, </span><span style="color: #001080">WalletConnection</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;near-api-js&quot;</span><span style="color: #000000">;</span>
 <span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">init</span><span style="color: #000000">, </span><span style="color: #001080">requestSignIn</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;@textile/near-storage&quot;</span><span style="color: #000000">;</span>
 
+<span style="color: #008000">// Defaults to Testnet: https://near.github.io/near-api-js/modules/browserconnect.html</span>
 <span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">near</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #795E26">connect</span><span style="color: #000000">({ ... });</span>
 
 <span style="color: #008000">// Need to access wallet</span>
@@ -164,8 +165,13 @@
 				<pre><code class="language-typescript"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">connect</span><span style="color: #000000">, </span><span style="color: #001080">WalletConnection</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;near-api-js&quot;</span><span style="color: #000000">;</span>
 <span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">init</span><span style="color: #000000">, </span><span style="color: #001080">requestSignIn</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;@textile/near-storage&quot;</span><span style="color: #000000">;</span>
 
-<span style="color: #008000">// See https://github.com/textileio/storage-js-dapp-demo for a basic demo</span>
+<span style="color: #008000">// See https://github.com/textileio/storage-js-basic-demo/ for a basic demo</span>
+
+
+<span style="color: #008000">// Defaults to Testnet: https://near.github.io/near-api-js/modules/browserconnect.html</span>
 <span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">near</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #795E26">connect</span><span style="color: #000000">({ ... });</span>
+
+<span style="color: #008000">// Need to access wallet</span>
 <span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">wallet</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">WalletConnection</span><span style="color: #000000">(</span><span style="color: #001080">near</span><span style="color: #000000">, </span><span style="color: #0000FF">null</span><span style="color: #000000">);</span>
 
 <span style="color: #008000">// Sign-in and authorize the @textile/near-storage smart contract (`filecoin-bridge.testnet`)</span>
