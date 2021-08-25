@@ -220,6 +220,32 @@ const aud = "0xaddress" // Intended audience
 const token = await createToken(signer, { aud });
 ```
 
+### Estimate Deposit
+
+Each chain-specific SDKs provides helper functions for estimating deposit amounts (as well as sane
+defaults). For instance, to compute the required deposit for a given chain, you can use the
+estimateDeposit API:
+
+#### NEAR
+
+```typescript
+import { estimateDeposit } from "@textile/near-storage";
+
+// Returns a string
+console.log(estimateDeposit(600)) // 600 seconds or 10 minutes
+// 249600000000000000000000
+```
+
+#### ETH/Polygon
+
+```typescript
+import { estimateDeposit } from "@textile/eth-storage";
+
+// Returns a BigNumber
+console.log(estimateDeposit(3600).toString()) // 1 hour
+// 360000000000000
+```
+
 # Maintainers
 
 [@carsonfarmer](https://github.com/carsonfarmer)

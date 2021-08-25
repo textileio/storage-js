@@ -2,7 +2,7 @@ import { WalletConnection } from "near-api-js";
 
 export const REGISTRY_ID = "storage-bridge-registry.testnet";
 export const PROVIDER_ID = "storage-bridge-validator.testnet";
-export const DEPOSIT = "250000000000000000000000";
+export const DEPOSIT = estimateDeposit(600);
 export const GAS = "300000000000000"; // 3e13
 
 export interface AccountOptions {
@@ -34,4 +34,15 @@ export async function requestSignIn(
   if (connection.isSignedIn()) return;
   if (!contractId) contractId = PROVIDER_ID;
   return connection.requestSignIn({ contractId, successUrl, failureUrl });
+}
+
+/**
+ * Estimate the required deposit size in yocto-NEAR given the session length.
+ * @param seconds The requested session length in seconds. Should be an integer value. Is passed
+ * through Math.floor before being multiplied by current session multiplier.
+ * @returns A string representation of the required deposit in yocto-NEAR.
+ */
+export function estimateDeposit(seconds: number): string {
+  const time = 416000 * Math.floor(seconds);
+  return time.toString() + "0".repeat(15);
 }
