@@ -3,19 +3,6 @@ import { encode as base58btc } from "bs58";
 import { createToken, Header, StandardClaims } from "@textile/core-storage";
 import { AccountOptions } from "./utils";
 
-// export function encodeKey(publicKey: Uint8Array): string {
-//   // Compute multi-base encoded key id as per:
-//   // w3c-ccg.github.io/did-method-key/#format
-//   const buffer = new Uint8Array(2 + publicKey.byteLength);
-//   buffer[0] = 0xed; // Using ed25519
-//   buffer[1] = 0x01;
-//   buffer.set(publicKey, 2);
-//   // prefix with `z` to indicate multi-base base58btc encoding
-//   const key = `z${base58btc(buffer)}`;
-//   const kid = `${"near:testnet"}:${key}`;
-//   return kid;
-// }
-
 /**
  * Create and sign a JWT token to produce a JWS.
  * @param signer A generic Signer interface as specified in `@textile/core-storage`.

@@ -17,6 +17,6 @@ export interface InitOptions {
   provider?: string;
   // Registry contract id.
   registry?: string;
-  // Self-signed access token.
+  // Self-signed access token. Should override auto-token signing if provided.
   token?: string;
 }
