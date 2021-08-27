@@ -24,7 +24,7 @@
 
 **Your bridge to the Filecoin storage ecosystem.**
 
-Textile's `storage-js` project provides zero-config Typescript/Javascript SDKs that make it easy to store data on the Filecoin network from any Blockchain-based dApp. `storage-js` should feel comfortable to developers already familiar with [NEAR](https://near.org/) and [Ethers](https://docs.ethers.io/) Javascript libraries. The chain-specific SDKs provide small but powerful API surfaces that integrates nicely with existing NEAR/ETH/Polygon development best practices. Simply import the library, deposit some funds, and you are ready to start submitting data to be stored on the Filecoin network.
+Textile's `@textile/storage` project provides zero-config Typescript/Javascript SDKs that make it easy to store data on the Filecoin network from any Blockchain-based dApp. `@textile/storage` should feel comfortable to developers already familiar with [NEAR](https://near.org/) and [Ethers](https://docs.ethers.io/) Javascript libraries. The chain-specific SDKs provide small but powerful API surfaces that integrates nicely with existing NEAR/ETH/Polygon development best practices. Simply import the library, deposit some funds, and you are ready to start submitting data to be stored on the Filecoin network. Interested in supporting additional chains and ecosystems? Create an Issue and let us know!
 
 # Install
 
@@ -71,9 +71,9 @@ await wallet.signOut();
 
 ```typescript
 import { providers } from "ethers";
-import { init } from "@textile/eth-storage";
+import { init, requestSignIn } from "@textile/eth-storage";
 
-await window.ethereum.enable();
+await requestSignIn();
 const provider = new providers.Web3Provider(window.ethereum);
 const wallet = provider.getSigner();
 
@@ -96,11 +96,11 @@ console.log([...deals])
 
 # API
 
-[Full library documentation (TypeDocs), available on GitHub Pages](https://textileio.github.io/storage-js/)!
+[Full library documentation available on GitHub Pages](https://textileio.github.io/storage-js/)!
 
-Each chain-specific implementation supports a core interface, defined by `@textile/core-storage`. Developers will generally **not** need to import or work directly with `@textile/core-storage`, and instead will import either `@textile/near-storage` or `@textile/eth-storage` (for ETH and Polygon).
+Each chain-specific implementation supports a core interface, defined by `@textile/core-storage`. Developers will generally **not** need to import or work directly with `@textile/core-storage`, and instead will import either `@textile/near-storage` or `@textile/eth-storage` (for any EVM compatible chain).
 
-The main entry point of the libraries expose an initialization function that takes a NEAR `Account` or an ETH `Signer` object, and returns a `Storage` object with a minimal `CoreAPI` interface. The initialization function can optionally take information about a known Filecoin storage provider, otherwise, a provider is automatically selected:
+The main entry point for the libraries (`init`) provides an initialization function that takes a NEAR `Account` or an ETH `Signer` object, and returns a `Storage` object with a minimal `CoreAPI` interface. The initialization function can optionally take information about a known Filecoin storage provider, otherwise a provider is automatically selected:
 
 ### NEAR
 ```typescript
@@ -109,17 +109,16 @@ import { init, requestSignIn } from "@textile/near-storage";
 
 // See https://github.com/textileio/storage-js-basic-demo/ for a basic demo
 
-
 // Defaults to Testnet: https://near.github.io/near-api-js/modules/browserconnect.html
 const near = await connect({ ... });
 
 // Need to access wallet
 const wallet = new WalletConnection(near, null);
 
-// Sign-in and authorize the @textile/near-storage smart contract (`filecoin-bridge.testnet`)
+// Sign-in and authorize the @textile/near-storage smart contract (or specify your own)
 await requestSignIn(wallet)
 
-// Initialize the storage object, and you're ready to go
+// Initialize the storage object, and you're ready to go!
 const storage = await init(wallet.account());
 ```
 
@@ -127,10 +126,12 @@ const storage = await init(wallet.account());
 
 ```typescript
 import { providers } from "ethers";
-import { init } from "@textile/eth-storage";
+import { init, requestSignIn } from "@textile/eth-storage";
 
 // See https://github.com/textileio/storage-js-dapp-demo for a basic demo
-await window.ethereum.enable();
+
+// Experimental API, see https://docs.metamask.io/guide/rpc-api.html#permissions
+await requestSignIn();
 const provider = new providers.Web3Provider(window.ethereum);
 const wallet = provider.getSigner();
 
@@ -210,9 +211,9 @@ Here's an example using the `createToken` API from a browser script (assumes you
 
 ```javascript
 import { providers } from "ethers";
-import { createToken } from "@textile/eth-storage";
+import { createToken, requestSignIn } from "@textile/eth-storage";
 
-await window.ethereum.enable();
+await requestSignIn();
 const provider = new providers.Web3Provider(window.ethereum);
 const signer = provider.getSigner();
 const aud = "0xaddress" // Intended audience
@@ -224,7 +225,7 @@ const token = await createToken(signer, { aud });
 
 Each chain-specific SDKs provides helper functions for estimating deposit amounts (as well as sane
 defaults). For instance, to compute the required deposit for a given chain, you can use the
-estimateDeposit API:
+`estimateDeposit` API:
 
 #### NEAR
 

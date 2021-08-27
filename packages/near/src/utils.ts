@@ -25,15 +25,18 @@ export interface SignInOptions {
  * Request to sign the user into their local browser wallet.
  * @param connection A pre-defined Wallet Connection.
  * @param opts A set of options for controlling callback urls etc.
- * @returns A promise.
+ * @returns A promise that resolves to true (success) or false.
  */
 export async function requestSignIn(
   connection: WalletConnection,
   { successUrl, failureUrl, contractId }: SignInOptions = {}
-): Promise<void> {
-  if (connection.isSignedIn()) return;
+): Promise<boolean> {
+  if (connection.isSignedIn()) return false;
   if (!contractId) contractId = PROVIDER_ID;
-  return connection.requestSignIn({ contractId, successUrl, failureUrl });
+  return connection
+    .requestSignIn({ contractId, successUrl, failureUrl })
+    .then(() => true)
+    .catch(() => false);
 }
 
 /**

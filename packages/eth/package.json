@@ -24,6 +24,7 @@
     "src/**/*.ts"
   ],
   "dependencies": {
+    "@metamask/detect-provider": "^1.2.0",
     "@textile/core-storage": "^0.1.0",
     "@textile/eth-storage-bridge": "^0.0.1",
     "ethers": "^5.4.3"
