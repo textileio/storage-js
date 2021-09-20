@@ -87,6 +87,7 @@
 				</a>
 				<p><strong>Your bridge to the Filecoin storage ecosystem.</strong></p>
 				<p>Textile&#39;s <code>storage-js</code> project provides zero-config Typescript/Javascript SDKs that make it easy to store data on the Filecoin network from any Blockchain-based dApp. <code>storage-js</code> should feel comfortable to developers already familiar with <a href="https://near.org/">NEAR</a> and <a href="https://docs.ethers.io/">Ethers</a> Javascript libraries. The chain-specific SDKs provide small but powerful API surfaces that integrates nicely with existing NEAR/ETH/Polygon development best practices. Simply import the library, deposit some funds, and you are ready to start submitting data to be stored on the Filecoin network.</p>
+				<p>For a great overview of the Filecoin Bridge system, <a href="https://www.youtube.com/watch?v=PXbIrzBUpR8">check out this introductory video</a>.</p>
 				<a href="#install" id="install" style="color: inherit; text-decoration: none;">
 					<h1>Install</h1>
 				</a>
@@ -214,6 +215,7 @@
 <span style="color: #008000">// The store API also takes optional configuration parameters</span>
 <span style="color: #0000FF">const</span><span style="color: #000000"> { </span><span style="color: #0070C1">id</span><span style="color: #000000">, </span><span style="color: #0070C1">cid</span><span style="color: #000000"> } = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">storage</span><span style="color: #000000">.</span><span style="color: #795E26">store</span><span style="color: #000000">(</span><span style="color: #001080">file</span><span style="color: #000000">);</span>
 </code></pre>
+				<p>The response from the <code>store</code> method includes the storage request <code>id</code>, and the data content id (or <code>cid</code>).The app should keep track of at least one of these values for later retrieval. For example, the app might be configured to store a mapping of Account Id to <code>cid</code>, to allow users to retrieve their data at a later date. Additionally, the <code>cid</code> can be used to fetch the data over IPFS via any public IPFS gateway, or IPFS node, including browser-based nodes. This makes it really easy to reference the data in NFT assets or any other on-chain reference to off-chain data!</p>
 				<a href="#check-status" id="check-status" style="color: inherit; text-decoration: none;">
 					<h2>Check status</h2>
 				</a>
@@ -262,6 +264,14 @@
 
 <span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">token</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #795E26">createToken</span><span style="color: #000000">(</span><span style="color: #001080">signer</span><span style="color: #000000">, { </span><span style="color: #001080">aud</span><span style="color: #000000"> });</span>
 </code></pre>
+				<p>Read the full <a href="https://textileio.github.io/storage-js/">API documentation here</a>.</p>
+				<a href="#examples" id="examples" style="color: inherit; text-decoration: none;">
+					<h2>Examples</h2>
+				</a>
+				<ul>
+					<li><a href="https://textileio.github.io/storage-js-basic-demo/near/">Basic React demo app</a> (<a href="https://github.com/textileio/storage-js-basic-demo/tree/main/near">source</a>)</li>
+					<li>More on the way!</li>
+				</ul>
 				<a href="#maintainers" id="maintainers" style="color: inherit; text-decoration: none;">
 					<h1>Maintainers</h1>
 				</a>
