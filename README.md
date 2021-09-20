@@ -26,7 +26,7 @@
 
 Textile's `storage-js` project provides zero-config Typescript/Javascript SDKs that make it easy to store data on the Filecoin network from any Blockchain-based dApp. `storage-js` should feel comfortable to developers already familiar with [NEAR](https://near.org/) and [Ethers](https://docs.ethers.io/) Javascript libraries. The chain-specific SDKs provide small but powerful API surfaces that integrates nicely with existing NEAR/ETH/Polygon development best practices. Simply import the library, deposit some funds, and you are ready to start submitting data to be stored on the Filecoin network.
 
-For a great overview of the Filecoin Bridge system, [check out this introductory video](https://www.youtube.com/watch?v=PXbIrzBUpR8).
+For a great overview of the Filecoin Bridge system, [check out this introductory video](https://www.youtube.com/watch?v=PXbIrzBUpR8), and for chain-specific docs, see https://near.storage/ and/or https://eth.storage/.
 
 # Install
 
