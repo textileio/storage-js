@@ -17,7 +17,8 @@ describe("eth/registry", () => {
       const registry = await factory.deploy();
       await registry.initialize();
       contract = create(external, registry.address);
-      await registry.addProvider(wallet.address);
+      const tx = await registry.addProvider(wallet.address);
+      await tx.wait();
     });
 
     test("listProviders", async () => {

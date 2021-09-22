@@ -1,20 +1,8 @@
 import { expect } from "chai";
-import { utils, providers } from "ethers";
-import { MockProvider } from "ethereum-waffle";
-import { estimateDeposit, requestSignIn } from "../src/utils";
-
-const p = new MockProvider() as unknown as providers.ExternalProvider;
-globalThis.window = globalThis as Window & typeof globalThis;
-window.ethereum = p;
-window.removeEventListener = () => undefined;
+import { utils } from "ethers";
+import { estimateDeposit } from "../src/utils";
 
 describe("eth/utils", () => {
-  // Skip for now because MockProvider doesn't support request or the eth_requestAccounts method
-  test.skip("requestSignIn", async () => {
-    expect(await requestSignIn()).to.be.false;
-    expect(window.ethereum).to.equal(p);
-  });
-
   test("estimateDeposit", () => {
     // ~ 360000 gwei or 0.00036 for about 1hr
     const expected = utils.parseUnits("360000", "gwei");

@@ -19,7 +19,8 @@ describe("eth/provider", () => {
     const provider = await factory.deploy();
     await provider.initialize();
     contract = await create(external, provider.address);
-    await provider.setApiEndpoint("https://provider.io");
+    const tx = await provider.setApiEndpoint("https://provider.io");
+    await tx.wait();
   });
   test("hasDeposit", async () => {
     const ok = await contract.hasDeposit();
