@@ -9,8 +9,8 @@ window.ethereum = p;
 window.removeEventListener = () => undefined;
 
 describe("eth/utils", () => {
-  test("requestSignIn", async () => {
-    // False for now because MockProvider doesn't support request or the eth_requestAccounts method
+  // Skip for now because MockProvider doesn't support request or the eth_requestAccounts method
+  test.skip("requestSignIn", async () => {
     expect(await requestSignIn()).to.be.false;
     expect(window.ethereum).to.equal(p);
   });
