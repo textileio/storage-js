@@ -26,6 +26,8 @@
 
 Textile's `@textile/storage` project provides zero-config Typescript/Javascript SDKs that make it easy to store data on the Filecoin network from any Blockchain-based dApp. `@textile/storage` should feel comfortable to developers already familiar with [NEAR](https://near.org/) and [Ethers](https://docs.ethers.io/) Javascript libraries. The chain-specific SDKs provide small but powerful API surfaces that integrates nicely with existing NEAR/ETH/Polygon development best practices. Simply import the library, deposit some funds, and you are ready to start submitting data to be stored on the Filecoin network. Interested in supporting additional chains and ecosystems? Create an Issue and let us know!
 
+For a great overview of the Filecoin Bridge system, [check out this introductory video](https://www.youtube.com/watch?v=PXbIrzBUpR8), and for chain-specific docs, see https://near.storage/ and/or https://eth.storage/.
+
 # Install
 
 ```bash
@@ -164,6 +166,8 @@ const file = new File([blob], "welcome.txt", {
 const { id, cid } = await storage.store(file);
 ```
 
+The response from the `store` method includes the storage request `id`, and the data content id (or `cid`).The app should keep track of at least one of these values for later retrieval. For example, the app might be configured to store a mapping of Account Id to `cid`, to allow users to retrieve their data at a later date. Additionally, the `cid` can be used to fetch the data over IPFS via any public IPFS gateway, or IPFS node, including browser-based nodes. This makes it really easy to reference the data in NFT assets or any other on-chain reference to off-chain data!
+
 ## Check status
 
 The status of the file can be queried using its `id`. The storage process ranges from "batching" files together, to "preparing" the storage deal, to "auctioning" the set of storage deals, to the actual "deal making" and "success" of the final storage deal on Filecoin. Along the way, clients may query the status in order to provide feedback to users.
@@ -246,6 +250,13 @@ import { estimateDeposit } from "@textile/eth-storage";
 console.log(estimateDeposit(3600).toString()) // 1 hour
 // 360000000000000
 ```
+
+Read the full [API documentation here](https://textileio.github.io/storage-js/).
+
+## Examples
+
+- [Basic React demo app](https://textileio.github.io/storage-js-basic-demo/near/) ([source](https://github.com/textileio/storage-js-basic-demo/tree/main/near))
+- More on the way!
 
 # Maintainers
 
