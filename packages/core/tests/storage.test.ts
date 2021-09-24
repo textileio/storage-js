@@ -88,7 +88,7 @@ describe("core/storage", () => {
     try {
       await storage.store(file as any);
       throw new Error("wrong error");
-    } catch (err) {
+    } catch (err: any) {
       expect(err.message).to.include("upload failed");
     }
     const request = await storage.store(file as any);
