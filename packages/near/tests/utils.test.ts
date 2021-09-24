@@ -1,6 +1,6 @@
 import { Runner } from "near-runner";
 import { expect } from "chai";
-import { requestSignIn } from "../src/utils";
+import { requestSignIn, estimateDeposit } from "../src/utils";
 import { WalletConnection, Near } from "near-api-js";
 
 globalThis.window = globalThis as Window & typeof globalThis;
@@ -68,5 +68,14 @@ describe("near/utils", () => {
           .toString()
       );
     });
+  });
+
+  test("estimateDeposit", () => {
+    // ~ 1/4 NEAR or 250000000000000000000000 yocto-NEAR
+    const expected = "249600000000000000000000";
+    const observed = estimateDeposit(600);
+    expect(expected).to.equal(observed);
+    const ten = "4160000000000000000000";
+    expect(estimateDeposit(10.1)).to.equal(ten);
   });
 });
