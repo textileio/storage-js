@@ -41,14 +41,15 @@ npm i @textile/eth-storage
 
 ```typescript
 import { connect, WalletConnection } from "near-api-js";
-import { init, requestSignIn } from "@textile/near-storage";
+import { init } from "@textile/near-storage";
 
 // Defaults to Testnet: https://near.github.io/near-api-js/modules/browserconnect.html
 const near = await connect({ ... });
 
 // Need to access wallet
 const wallet = new WalletConnection(near, null);
-await requestSignIn(wallet);
+// Request to sign into your amazing near smart-contract!
+await wallet.requestSignIn({ contractId: "mycontract.testnet" });
 
 const storage = init(wallet.account());
 
@@ -73,9 +74,10 @@ await wallet.signOut();
 
 ```typescript
 import { providers } from "ethers";
-import { init, requestSignIn } from "@textile/eth-storage";
+import { init } from "@textile/eth-storage";
 
-await requestSignIn();
+// See also https://docs.metamask.io/guide/rpc-api.html#permissions
+await window.ethereum.enable();
 const provider = new providers.Web3Provider(window.ethereum);
 const wallet = provider.getSigner();
 
@@ -91,9 +93,9 @@ await storage.addDeposit();
 
 const { id, cid } = await storage.store(file);
 
-const { request, deals } = await storage.status(id)
-console.log(request.status_code)
-console.log([...deals])
+const { request, deals } = await storage.status(id);
+console.log(request.status_code);
+console.log([...deals]);
 ```
 
 # API
@@ -105,9 +107,10 @@ Each chain-specific implementation supports a core interface, defined by `@texti
 The main entry point for the libraries (`init`) provides an initialization function that takes a NEAR `Account` or an ETH `Signer` object, and returns a `Storage` object with a minimal `CoreAPI` interface. The initialization function can optionally take information about a known Filecoin storage provider, otherwise a provider is automatically selected:
 
 ### NEAR
+
 ```typescript
 import { connect, WalletConnection } from "near-api-js";
-import { init, requestSignIn } from "@textile/near-storage";
+import { init, PROVIDER_ID } from "@textile/near-storage";
 
 // See https://github.com/textileio/storage-js-basic-demo/ for a basic demo
 
@@ -117,8 +120,8 @@ const near = await connect({ ... });
 // Need to access wallet
 const wallet = new WalletConnection(near, null);
 
-// Sign-in and authorize the @textile/near-storage smart contract (or specify your own)
-await requestSignIn(wallet)
+// Sign-in and authorize the @textile/near-storage smart contract (or even better, specify your own!)
+await wallet.requestSignIn({ contractId: PROIVDER_ID });
 
 // Initialize the storage object, and you're ready to go!
 const storage = await init(wallet.account());
@@ -128,12 +131,12 @@ const storage = await init(wallet.account());
 
 ```typescript
 import { providers } from "ethers";
-import { init, requestSignIn } from "@textile/eth-storage";
+import { init } from "@textile/eth-storage";
 
 // See https://github.com/textileio/storage-js-dapp-demo for a basic demo
 
-// Experimental API, see https://docs.metamask.io/guide/rpc-api.html#permissions
-await requestSignIn();
+// See also https://docs.metamask.io/guide/rpc-api.html#permissions
+await window.ethereum.enable();
 const provider = new providers.Web3Provider(window.ethereum);
 const wallet = provider.getSigner();
 
@@ -159,7 +162,7 @@ Once a valid deposit is available, the app/user can push data to the provider us
 const blob = new Blob(["Hello, world!"], { type: "text/plain" });
 const file = new File([blob], "welcome.txt", {
   type: "text/plain",
-  lastModified: new Date().getTime()
+  lastModified: new Date().getTime(),
 });
 
 // The store API also takes optional configuration parameters
@@ -215,12 +218,13 @@ Here's an example using the `createToken` API from a browser script (assumes you
 
 ```javascript
 import { providers } from "ethers";
-import { createToken, requestSignIn } from "@textile/eth-storage";
+import { createToken } from "@textile/eth-storage";
 
-await requestSignIn();
+// See also https://docs.metamask.io/guide/rpc-api.html#permissions
+await window.ethereum.enable();
 const provider = new providers.Web3Provider(window.ethereum);
 const signer = provider.getSigner();
-const aud = "0xaddress" // Intended audience
+const aud = "0xaddress"; // Intended audience
 
 const token = await createToken(signer, { aud });
 ```
@@ -237,7 +241,7 @@ defaults). For instance, to compute the required deposit for a given chain, you 
 import { estimateDeposit } from "@textile/near-storage";
 
 // Returns a string
-console.log(estimateDeposit(600)) // 600 seconds or 10 minutes
+console.log(estimateDeposit(600)); // 600 seconds or 10 minutes
 // 249600000000000000000000
 ```
 
@@ -247,7 +251,7 @@ console.log(estimateDeposit(600)) // 600 seconds or 10 minutes
 import { estimateDeposit } from "@textile/eth-storage";
 
 // Returns a BigNumber
-console.log(estimateDeposit(3600).toString()) // 1 hour
+console.log(estimateDeposit(3600).toString()); // 1 hour
 // 360000000000000
 ```
 
