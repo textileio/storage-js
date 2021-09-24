@@ -109,6 +109,7 @@
 							<h3>Functions</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_textile_near_storage.html#createToken" class="tsd-kind-icon">create<wbr>Token</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_textile_near_storage.html#estimateDeposit" class="tsd-kind-icon">estimate<wbr>Deposit</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_textile_near_storage.html#init" class="tsd-kind-icon">init</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_textile_near_storage.html#requestSignIn" class="tsd-kind-icon">request<wbr>Sign<wbr>In</a></li>
 							</ul>
@@ -140,10 +141,10 @@
 				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-module">
 					<a name="DEPOSIT" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagConst">Const</span> DEPOSIT</h3>
-					<div class="tsd-signature tsd-kind-icon">DEPOSIT<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">&quot;250000000000000000000000&quot;</span><span class="tsd-signature-symbol"> = &quot;250000000000000000000000&quot;</span></div>
+					<div class="tsd-signature tsd-kind-icon">DEPOSIT<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = ...</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/textileio/storage-js/blob/c0bc4bd/packages/near/src/utils.ts#L5">near/src/utils.ts:5</a></li>
+							<li>Defined in <a href="https://github.com/textileio/storage-js/blob/747eb8f/packages/near/src/utils.ts#L5">near/src/utils.ts:5</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -153,7 +154,7 @@
 					<div class="tsd-signature tsd-kind-icon">GAS<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">&quot;300000000000000&quot;</span><span class="tsd-signature-symbol"> = &quot;300000000000000&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/textileio/storage-js/blob/c0bc4bd/packages/near/src/utils.ts#L6">near/src/utils.ts:6</a></li>
+							<li>Defined in <a href="https://github.com/textileio/storage-js/blob/747eb8f/packages/near/src/utils.ts#L6">near/src/utils.ts:6</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -163,7 +164,7 @@
 					<div class="tsd-signature tsd-kind-icon">PROVIDER_<wbr>ID<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">&quot;storage-bridge-validator.testnet&quot;</span><span class="tsd-signature-symbol"> = &quot;storage-bridge-validator.testnet&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/textileio/storage-js/blob/c0bc4bd/packages/near/src/utils.ts#L4">near/src/utils.ts:4</a></li>
+							<li>Defined in <a href="https://github.com/textileio/storage-js/blob/747eb8f/packages/near/src/utils.ts#L4">near/src/utils.ts:4</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -173,7 +174,7 @@
 					<div class="tsd-signature tsd-kind-icon">REGISTRY_<wbr>ID<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">&quot;storage-bridge-registry.testnet&quot;</span><span class="tsd-signature-symbol"> = &quot;storage-bridge-registry.testnet&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/textileio/storage-js/blob/c0bc4bd/packages/near/src/utils.ts#L3">near/src/utils.ts:3</a></li>
+							<li>Defined in <a href="https://github.com/textileio/storage-js/blob/747eb8f/packages/near/src/utils.ts#L3">near/src/utils.ts:3</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -190,7 +191,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/textileio/storage-js/blob/c0bc4bd/packages/near/src/token.ts#L25">near/src/token.ts:25</a></li>
+									<li>Defined in <a href="https://github.com/textileio/storage-js/blob/747eb8f/packages/near/src/token.ts#L12">near/src/token.ts:12</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -216,6 +217,39 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+					<a name="estimateDeposit" class="tsd-anchor"></a>
+					<h3>estimate<wbr>Deposit</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+						<li class="tsd-signature tsd-kind-icon">estimate<wbr>Deposit<span class="tsd-signature-symbol">(</span>seconds<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/textileio/storage-js/blob/747eb8f/packages/near/src/utils.ts#L48">near/src/utils.ts:48</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Estimate the required deposit size in yocto-NEAR given the session length.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>seconds: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The requested session length in seconds. Should be an integer value. Is passed
+										through Math.floor before being multiplied by current session multiplier.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+							<p>A string representation of the required deposit in yocto-NEAR.</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
 					<a name="init" class="tsd-anchor"></a>
 					<h3>init</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
@@ -225,7 +259,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/textileio/storage-js/blob/c0bc4bd/packages/near/src/index.ts#L48">near/src/index.ts:48</a></li>
+									<li>Defined in <a href="https://github.com/textileio/storage-js/blob/747eb8f/packages/near/src/index.ts#L48">near/src/index.ts:48</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -261,13 +295,13 @@
 					<a name="requestSignIn" class="tsd-anchor"></a>
 					<h3>request<wbr>Sign<wbr>In</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-						<li class="tsd-signature tsd-kind-icon">request<wbr>Sign<wbr>In<span class="tsd-signature-symbol">(</span>connection<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">WalletConnection</span>, __namedParameters<span class="tsd-signature-symbol">?: </span><a href="../interfaces/_textile_near_storage.SignInOptions.html" class="tsd-signature-type" data-tsd-kind="Interface">SignInOptions</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">request<wbr>Sign<wbr>In<span class="tsd-signature-symbol">(</span>connection<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">WalletConnection</span>, __namedParameters<span class="tsd-signature-symbol">?: </span><a href="../interfaces/_textile_near_storage.SignInOptions.html" class="tsd-signature-type" data-tsd-kind="Interface">SignInOptions</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/textileio/storage-js/blob/c0bc4bd/packages/near/src/utils.ts#L30">near/src/utils.ts:30</a></li>
+									<li>Defined in <a href="https://github.com/textileio/storage-js/blob/747eb8f/packages/near/src/utils.ts#L30">near/src/utils.ts:30</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -287,8 +321,8 @@
 									<h5>__namedParameters: <a href="../interfaces/_textile_near_storage.SignInOptions.html" class="tsd-signature-type" data-tsd-kind="Interface">SignInOptions</a><span class="tsd-signature-symbol"> = {}</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
-							<p>A promise.</p>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>A promise that resolves to true (success) or false.</p>
 						</li>
 					</ul>
 				</section>
@@ -378,6 +412,9 @@
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
 						<a href="_textile_near_storage.html#createToken" class="tsd-kind-icon">create<wbr>Token</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="_textile_near_storage.html#estimateDeposit" class="tsd-kind-icon">estimate<wbr>Deposit</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
 						<a href="_textile_near_storage.html#init" class="tsd-kind-icon">init</a>

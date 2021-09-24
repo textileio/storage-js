@@ -86,7 +86,7 @@
 					<h1>Background</h1>
 				</a>
 				<p><strong>Your bridge to the Filecoin storage ecosystem.</strong></p>
-				<p>Textile&#39;s <code>storage-js</code> project provides zero-config Typescript/Javascript SDKs that make it easy to store data on the Filecoin network from any Blockchain-based dApp. <code>storage-js</code> should feel comfortable to developers already familiar with <a href="https://near.org/">NEAR</a> and <a href="https://docs.ethers.io/">Ethers</a> Javascript libraries. The chain-specific SDKs provide small but powerful API surfaces that integrates nicely with existing NEAR/ETH/Polygon development best practices. Simply import the library, deposit some funds, and you are ready to start submitting data to be stored on the Filecoin network.</p>
+				<p>Textile&#39;s <code>@textile/storage</code> project provides zero-config Typescript/Javascript SDKs that make it easy to store data on the Filecoin network from any Blockchain-based dApp. <code>@textile/storage</code> should feel comfortable to developers already familiar with <a href="https://near.org/">NEAR</a> and <a href="https://docs.ethers.io/">Ethers</a> Javascript libraries. The chain-specific SDKs provide small but powerful API surfaces that integrates nicely with existing NEAR/ETH/Polygon development best practices. Simply import the library, deposit some funds, and you are ready to start submitting data to be stored on the Filecoin network. Interested in supporting additional chains and ecosystems? Create an Issue and let us know!</p>
 				<p>For a great overview of the Filecoin Bridge system, <a href="https://www.youtube.com/watch?v=PXbIrzBUpR8">check out this introductory video</a>, and for chain-specific docs, see <a href="https://near.storage/">https://near.storage/</a> and/or <a href="https://eth.storage/">https://eth.storage/</a>.</p>
 				<a href="#install" id="install" style="color: inherit; text-decoration: none;">
 					<h1>Install</h1>
@@ -101,14 +101,15 @@
 					<h3>NEAR</h3>
 				</a>
 				<pre><code class="language-typescript"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">connect</span><span style="color: #000000">, </span><span style="color: #001080">WalletConnection</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;near-api-js&quot;</span><span style="color: #000000">;</span>
-<span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">init</span><span style="color: #000000">, </span><span style="color: #001080">requestSignIn</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;@textile/near-storage&quot;</span><span style="color: #000000">;</span>
+<span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">init</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;@textile/near-storage&quot;</span><span style="color: #000000">;</span>
 
 <span style="color: #008000">// Defaults to Testnet: https://near.github.io/near-api-js/modules/browserconnect.html</span>
 <span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">near</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #795E26">connect</span><span style="color: #000000">({ ... });</span>
 
 <span style="color: #008000">// Need to access wallet</span>
 <span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">wallet</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">WalletConnection</span><span style="color: #000000">(</span><span style="color: #001080">near</span><span style="color: #000000">, </span><span style="color: #0000FF">null</span><span style="color: #000000">);</span>
-<span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #795E26">requestSignIn</span><span style="color: #000000">(</span><span style="color: #001080">wallet</span><span style="color: #000000">);</span>
+<span style="color: #008000">// Request to sign into your amazing near smart-contract!</span>
+<span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">wallet</span><span style="color: #000000">.</span><span style="color: #795E26">requestSignIn</span><span style="color: #000000">({ </span><span style="color: #001080">contractId:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;mycontract.testnet&quot;</span><span style="color: #000000"> });</span>
 
 <span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">storage</span><span style="color: #000000"> = </span><span style="color: #795E26">init</span><span style="color: #000000">(</span><span style="color: #001080">wallet</span><span style="color: #000000">.</span><span style="color: #795E26">account</span><span style="color: #000000">());</span>
 
@@ -134,6 +135,7 @@
 				<pre><code class="language-typescript"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">providers</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;ethers&quot;</span><span style="color: #000000">;</span>
 <span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">init</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;@textile/eth-storage&quot;</span><span style="color: #000000">;</span>
 
+<span style="color: #008000">// See also https://docs.metamask.io/guide/rpc-api.html#permissions</span>
 <span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">window</span><span style="color: #000000">.</span><span style="color: #001080">ethereum</span><span style="color: #000000">.</span><span style="color: #795E26">enable</span><span style="color: #000000">();</span>
 <span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">provider</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #001080">providers</span><span style="color: #000000">.</span><span style="color: #795E26">Web3Provider</span><span style="color: #000000">(</span><span style="color: #001080">window</span><span style="color: #000000">.</span><span style="color: #001080">ethereum</span><span style="color: #000000">);</span>
 <span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">wallet</span><span style="color: #000000"> = </span><span style="color: #001080">provider</span><span style="color: #000000">.</span><span style="color: #795E26">getSigner</span><span style="color: #000000">();</span>
@@ -150,24 +152,23 @@
 
 <span style="color: #0000FF">const</span><span style="color: #000000"> { </span><span style="color: #0070C1">id</span><span style="color: #000000">, </span><span style="color: #0070C1">cid</span><span style="color: #000000"> } = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">storage</span><span style="color: #000000">.</span><span style="color: #795E26">store</span><span style="color: #000000">(</span><span style="color: #001080">file</span><span style="color: #000000">);</span>
 
-<span style="color: #0000FF">const</span><span style="color: #000000"> { </span><span style="color: #0070C1">request</span><span style="color: #000000">, </span><span style="color: #0070C1">deals</span><span style="color: #000000"> } = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">storage</span><span style="color: #000000">.</span><span style="color: #795E26">status</span><span style="color: #000000">(</span><span style="color: #001080">id</span><span style="color: #000000">)</span>
-<span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">request</span><span style="color: #000000">.</span><span style="color: #001080">status_code</span><span style="color: #000000">)</span>
-<span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">([...</span><span style="color: #001080">deals</span><span style="color: #000000">])</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> { </span><span style="color: #0070C1">request</span><span style="color: #000000">, </span><span style="color: #0070C1">deals</span><span style="color: #000000"> } = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">storage</span><span style="color: #000000">.</span><span style="color: #795E26">status</span><span style="color: #000000">(</span><span style="color: #001080">id</span><span style="color: #000000">);</span>
+<span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">request</span><span style="color: #000000">.</span><span style="color: #001080">status_code</span><span style="color: #000000">);</span>
+<span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">([...</span><span style="color: #001080">deals</span><span style="color: #000000">]);</span>
 </code></pre>
 				<a href="#api" id="api" style="color: inherit; text-decoration: none;">
 					<h1>API</h1>
 				</a>
-				<p><a href="https://textileio.github.io/storage-js/">Full library documentation (TypeDocs), available on GitHub Pages</a>!</p>
-				<p>Each chain-specific implementation supports a core interface, defined by <code>@textile/core-storage</code>. Developers will generally <strong>not</strong> need to import or work directly with <code>@textile/core-storage</code>, and instead will import either <code>@textile/near-storage</code> or <code>@textile/eth-storage</code> (for ETH and Polygon).</p>
-				<p>The main entry point of the libraries expose an initialization function that takes a NEAR <code>Account</code> or an ETH <code>Signer</code> object, and returns a <code>Storage</code> object with a minimal <code>CoreAPI</code> interface. The initialization function can optionally take information about a known Filecoin storage provider, otherwise, a provider is automatically selected:</p>
+				<p><a href="https://textileio.github.io/storage-js/">Full library documentation available on GitHub Pages</a>!</p>
+				<p>Each chain-specific implementation supports a core interface, defined by <code>@textile/core-storage</code>. Developers will generally <strong>not</strong> need to import or work directly with <code>@textile/core-storage</code>, and instead will import either <code>@textile/near-storage</code> or <code>@textile/eth-storage</code> (for any EVM compatible chain).</p>
+				<p>The main entry point for the libraries (<code>init</code>) provides an initialization function that takes a NEAR <code>Account</code> or an ETH <code>Signer</code> object, and returns a <code>Storage</code> object with a minimal <code>CoreAPI</code> interface. The initialization function can optionally take information about a known Filecoin storage provider, otherwise a provider is automatically selected:</p>
 				<a href="#near-1" id="near-1" style="color: inherit; text-decoration: none;">
 					<h3>NEAR</h3>
 				</a>
 				<pre><code class="language-typescript"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">connect</span><span style="color: #000000">, </span><span style="color: #001080">WalletConnection</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;near-api-js&quot;</span><span style="color: #000000">;</span>
-<span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">init</span><span style="color: #000000">, </span><span style="color: #001080">requestSignIn</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;@textile/near-storage&quot;</span><span style="color: #000000">;</span>
+<span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">init</span><span style="color: #000000">, </span><span style="color: #001080">PROVIDER_ID</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;@textile/near-storage&quot;</span><span style="color: #000000">;</span>
 
 <span style="color: #008000">// See https://github.com/textileio/storage-js-basic-demo/ for a basic demo</span>
-
 
 <span style="color: #008000">// Defaults to Testnet: https://near.github.io/near-api-js/modules/browserconnect.html</span>
 <span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">near</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #795E26">connect</span><span style="color: #000000">({ ... });</span>
@@ -175,10 +176,10 @@
 <span style="color: #008000">// Need to access wallet</span>
 <span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">wallet</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">WalletConnection</span><span style="color: #000000">(</span><span style="color: #001080">near</span><span style="color: #000000">, </span><span style="color: #0000FF">null</span><span style="color: #000000">);</span>
 
-<span style="color: #008000">// Sign-in and authorize the @textile/near-storage smart contract (`filecoin-bridge.testnet`)</span>
-<span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #795E26">requestSignIn</span><span style="color: #000000">(</span><span style="color: #001080">wallet</span><span style="color: #000000">)</span>
+<span style="color: #008000">// Sign-in and authorize the @textile/near-storage smart contract (or even better, specify your own!)</span>
+<span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">wallet</span><span style="color: #000000">.</span><span style="color: #795E26">requestSignIn</span><span style="color: #000000">({ </span><span style="color: #001080">contractId:</span><span style="color: #000000"> </span><span style="color: #0070C1">PROIVDER_ID</span><span style="color: #000000"> });</span>
 
-<span style="color: #008000">// Initialize the storage object, and you&#039;re ready to go</span>
+<span style="color: #008000">// Initialize the storage object, and you&#039;re ready to go!</span>
 <span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">storage</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #795E26">init</span><span style="color: #000000">(</span><span style="color: #001080">wallet</span><span style="color: #000000">.</span><span style="color: #795E26">account</span><span style="color: #000000">());</span>
 </code></pre>
 				<a href="#ethpolygon-1" id="ethpolygon-1" style="color: inherit; text-decoration: none;">
@@ -188,6 +189,8 @@
 <span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">init</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;@textile/eth-storage&quot;</span><span style="color: #000000">;</span>
 
 <span style="color: #008000">// See https://github.com/textileio/storage-js-dapp-demo for a basic demo</span>
+
+<span style="color: #008000">// See also https://docs.metamask.io/guide/rpc-api.html#permissions</span>
 <span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">window</span><span style="color: #000000">.</span><span style="color: #001080">ethereum</span><span style="color: #000000">.</span><span style="color: #795E26">enable</span><span style="color: #000000">();</span>
 <span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">provider</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #001080">providers</span><span style="color: #000000">.</span><span style="color: #795E26">Web3Provider</span><span style="color: #000000">(</span><span style="color: #001080">window</span><span style="color: #000000">.</span><span style="color: #001080">ethereum</span><span style="color: #000000">);</span>
 <span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">wallet</span><span style="color: #000000"> = </span><span style="color: #001080">provider</span><span style="color: #000000">.</span><span style="color: #795E26">getSigner</span><span style="color: #000000">();</span>
@@ -209,7 +212,7 @@
 				<pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">blob</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">Blob</span><span style="color: #000000">([</span><span style="color: #A31515">&quot;Hello, world!&quot;</span><span style="color: #000000">], { </span><span style="color: #001080">type:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;text/plain&quot;</span><span style="color: #000000"> });</span>
 <span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">file</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">File</span><span style="color: #000000">([</span><span style="color: #001080">blob</span><span style="color: #000000">], </span><span style="color: #A31515">&quot;welcome.txt&quot;</span><span style="color: #000000">, {</span>
 <span style="color: #000000">  </span><span style="color: #001080">type:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;text/plain&quot;</span><span style="color: #000000">,</span>
-<span style="color: #000000">  </span><span style="color: #001080">lastModified:</span><span style="color: #000000"> </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #267F99">Date</span><span style="color: #000000">().</span><span style="color: #795E26">getTime</span><span style="color: #000000">()</span>
+<span style="color: #000000">  </span><span style="color: #001080">lastModified:</span><span style="color: #000000"> </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #267F99">Date</span><span style="color: #000000">().</span><span style="color: #795E26">getTime</span><span style="color: #000000">(),</span>
 <span style="color: #000000">});</span>
 
 <span style="color: #008000">// The store API also takes optional configuration parameters</span>
@@ -257,12 +260,37 @@
 				<pre><code class="language-javascript"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">providers</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;ethers&quot;</span><span style="color: #000000">;</span>
 <span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">createToken</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;@textile/eth-storage&quot;</span><span style="color: #000000">;</span>
 
+<span style="color: #008000">// See also https://docs.metamask.io/guide/rpc-api.html#permissions</span>
 <span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">window</span><span style="color: #000000">.</span><span style="color: #001080">ethereum</span><span style="color: #000000">.</span><span style="color: #795E26">enable</span><span style="color: #000000">();</span>
 <span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">provider</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #001080">providers</span><span style="color: #000000">.</span><span style="color: #795E26">Web3Provider</span><span style="color: #000000">(</span><span style="color: #001080">window</span><span style="color: #000000">.</span><span style="color: #001080">ethereum</span><span style="color: #000000">);</span>
 <span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">signer</span><span style="color: #000000"> = </span><span style="color: #001080">provider</span><span style="color: #000000">.</span><span style="color: #795E26">getSigner</span><span style="color: #000000">();</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">aud</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;0xaddress&quot;</span><span style="color: #000000"> </span><span style="color: #008000">// Intended audience</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">aud</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;0xaddress&quot;</span><span style="color: #000000">; </span><span style="color: #008000">// Intended audience</span>
 
 <span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">token</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #795E26">createToken</span><span style="color: #000000">(</span><span style="color: #001080">signer</span><span style="color: #000000">, { </span><span style="color: #001080">aud</span><span style="color: #000000"> });</span>
+</code></pre>
+				<a href="#estimate-deposit" id="estimate-deposit" style="color: inherit; text-decoration: none;">
+					<h3>Estimate Deposit</h3>
+				</a>
+				<p>Each chain-specific SDKs provides helper functions for estimating deposit amounts (as well as sane
+					defaults). For instance, to compute the required deposit for a given chain, you can use the
+				<code>estimateDeposit</code> API:</p>
+				<a href="#near-3" id="near-3" style="color: inherit; text-decoration: none;">
+					<h4>NEAR</h4>
+				</a>
+				<pre><code class="language-typescript"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">estimateDeposit</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;@textile/near-storage&quot;</span><span style="color: #000000">;</span>
+
+<span style="color: #008000">// Returns a string</span>
+<span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #795E26">estimateDeposit</span><span style="color: #000000">(</span><span style="color: #098658">600</span><span style="color: #000000">)); </span><span style="color: #008000">// 600 seconds or 10 minutes</span>
+<span style="color: #008000">// 249600000000000000000000</span>
+</code></pre>
+				<a href="#ethpolygon-3" id="ethpolygon-3" style="color: inherit; text-decoration: none;">
+					<h4>ETH/Polygon</h4>
+				</a>
+				<pre><code class="language-typescript"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">estimateDeposit</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;@textile/eth-storage&quot;</span><span style="color: #000000">;</span>
+
+<span style="color: #008000">// Returns a BigNumber</span>
+<span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #795E26">estimateDeposit</span><span style="color: #000000">(</span><span style="color: #098658">3600</span><span style="color: #000000">).</span><span style="color: #795E26">toString</span><span style="color: #000000">()); </span><span style="color: #008000">// 1 hour</span>
+<span style="color: #008000">// 360000000000000</span>
 </code></pre>
 				<p>Read the full <a href="https://textileio.github.io/storage-js/">API documentation here</a>.</p>
 				<a href="#examples" id="examples" style="color: inherit; text-decoration: none;">
