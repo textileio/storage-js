@@ -4,7 +4,6 @@
   "private": true,
   "description": "Javascript/Typescript SDK for Textile's blockchain ↔ Filecoin bridge system",
   "main": "index.js",
-  "types": "module",
   "scripts": {
     "test": "jest",
     "docs": "npm run build && typedoc --packages .",
@@ -37,6 +36,7 @@
     "@types/jest": "^26.0.24",
     "@typescript-eslint/eslint-plugin": "^4.28.4",
     "@typescript-eslint/parser": "^4.28.4",
+    "@zoltu/typescript-transformer-append-js-extension": "^1.0.1",
     "bs58": "^4.0.1",
     "chai": "^4.3.4",
     "eslint": "^7.31.0",
@@ -52,6 +52,7 @@
     "prettier": "^2.3.2",
     "ts-jest": "^27.0.4",
     "ts-node": "^10.1.0",
+    "ttypescript": "^1.5.12",
     "typedoc": "^0.21.5",
     "typescript": "^4.3.5"
   },

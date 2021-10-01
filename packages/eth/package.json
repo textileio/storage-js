@@ -9,7 +9,7 @@
   "scripts": {
     "build": "npm run build:cjs && npm run build:esm",
     "build:cjs": "tsc -b",
-    "build:esm": "tsc -b tsconfig.esm.json"
+    "build:esm": "ttsc -b tsconfig.esm.json"
   },
   "exports": {
     ".": {

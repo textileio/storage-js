@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { expect } from "chai";
 import { decodeURLSafe } from "@stablelib/base64";
 import { verify } from "@stablelib/ed25519";
@@ -54,7 +55,7 @@ describe("core/token", () => {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       await createToken(signer, {} as any, {} as any);
       throw new Error("wrong error");
-    } catch (err) {
+    } catch (err: any) {
       expect(err.message).to.include("InputError");
     }
   });
