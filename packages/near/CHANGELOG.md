@@ -1,5 +1,11 @@
 # @textile/near-storage
 
+## 7.1.0
+
+### Minor Changes
+
+- 5a749c6: better esm support and new utility apis
+
 ## 7.0.3
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @textile/eth-storage
 
+## 0.2.0
+
+### Minor Changes
+
+- 5a749c6: better esm support and new utility apis
+
 ## 0.1.0
 
 ### Minor Changes
