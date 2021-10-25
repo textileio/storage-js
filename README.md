@@ -77,7 +77,7 @@ import { providers } from "ethers";
 import { init } from "@textile/eth-storage";
 
 // See also https://docs.metamask.io/guide/rpc-api.html#permissions
-await window.ethereum.enable();
+await window.ethereum.request({ method: 'eth_requestAccounts' });
 const provider = new providers.Web3Provider(window.ethereum);
 const wallet = provider.getSigner();
 
@@ -136,7 +136,7 @@ import { init } from "@textile/eth-storage";
 // See https://github.com/textileio/storage-js-dapp-demo for a basic demo
 
 // See also https://docs.metamask.io/guide/rpc-api.html#permissions
-await window.ethereum.enable();
+await window.ethereum.request({ method: 'eth_requestAccounts' });
 const provider = new providers.Web3Provider(window.ethereum);
 const wallet = provider.getSigner();
 
@@ -221,7 +221,7 @@ import { providers } from "ethers";
 import { createToken } from "@textile/eth-storage";
 
 // See also https://docs.metamask.io/guide/rpc-api.html#permissions
-await window.ethereum.enable();
+await window.ethereum.request({ method: 'eth_requestAccounts' });
 const provider = new providers.Web3Provider(window.ethereum);
 const signer = provider.getSigner();
 const aud = "0xaddress"; // Intended audience
