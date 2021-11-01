@@ -270,6 +270,16 @@ Read the full [API documentation here](https://textileio.github.io/storage-js/).
 
 PRs accepted.
 
+To get started clone this repo, then do:
+```bash
+# use the latest node and npm LTS
+npm install
+npm run build
+
+# see if everything is working
+npm test
+```
+
 Small note: If editing the README, please conform to the
 [standard-readme](https://github.com/RichardLitt/standard-readme) specification.
 
