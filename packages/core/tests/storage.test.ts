@@ -17,6 +17,9 @@ import { createToken } from "../src/token";
 let storage: StorageAPI;
 // const keyStore = new keyStores.InMemoryKeyStore();
 // let walletConnection: WalletConnection;
+describe("core/derp", () => {
+  throw new Error("this test fails");
+});
 
 describe("core/storage", () => {
   beforeAll(() => {
