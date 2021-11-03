@@ -4,7 +4,7 @@ import { MockProvider, solidity } from "ethereum-waffle";
 import fetchMock from "fetch-mock-jest";
 import { FormData } from "formdata-node";
 import { Readable } from "stream";
-import { Encoder } from "form-data-encoder";
+import { FormDataEncoder } from "form-data-encoder";
 import {
   BridgeProvider__factory,
   BridgeRegistry__factory,
@@ -60,7 +60,7 @@ describe("eth/main", () => {
 
     const formData = new FormData();
     formData.set("file", "Hello, world!");
-    const encoder = new Encoder(formData);
+    const encoder = new FormDataEncoder(formData);
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     await contract.store(Readable.from(encoder) as any, {
       headers: encoder.headers,
