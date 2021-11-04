@@ -1707,14 +1707,14 @@ export type StatusByCidQueryVariables = Exact<{
 }>;
 
 
-export type StatusByCidQuery = { __typename?: 'Query', requests?: { __typename?: 'StorageRequestsConnection', nodes: Array<{ __typename?: 'StorageRequest', status: StorageRequestStatus, id: string, cid: string, batch?: { __typename?: 'Batch', payload?: { __typename?: 'StoragePayload', deals: { __typename?: 'DealsConnection', nodes: Array<{ __typename?: 'Deal', status: Status, deal_id: any, miner: string, deal_expiration: any }> } } | null | undefined } | null | undefined }> } | null | undefined };
+export type StatusByCidQuery = { __typename?: 'Query', requests?: { __typename?: 'StorageRequestsConnection', nodes: Array<{ __typename?: 'StorageRequest', status: StorageRequestStatus, id: string, cid: string, batch?: { __typename?: 'Batch', payload?: { __typename?: 'StoragePayload', deals: { __typename?: 'DealsConnection', nodes: Array<{ __typename?: 'Deal', deal_id: any, miner: string, deal_expiration: any, deal_status: MarketDealStatus }> } } | null | undefined } | null | undefined }> } | null | undefined };
 
 export type StatusByIdQueryVariables = Exact<{
   id: Scalars['String'];
 }>;
 
 
-export type StatusByIdQuery = { __typename?: 'Query', requests?: { __typename?: 'StorageRequestsConnection', nodes: Array<{ __typename?: 'StorageRequest', status: StorageRequestStatus, id: string, cid: string, batch?: { __typename?: 'Batch', payload?: { __typename?: 'StoragePayload', deals: { __typename?: 'DealsConnection', nodes: Array<{ __typename?: 'Deal', status: Status, deal_id: any, miner: string, deal_expiration: any }> } } | null | undefined } | null | undefined }> } | null | undefined };
+export type StatusByIdQuery = { __typename?: 'Query', requests?: { __typename?: 'StorageRequestsConnection', nodes: Array<{ __typename?: 'StorageRequest', status: StorageRequestStatus, id: string, cid: string, batch?: { __typename?: 'Batch', payload?: { __typename?: 'StoragePayload', deals: { __typename?: 'DealsConnection', nodes: Array<{ __typename?: 'Deal', deal_id: any, miner: string, deal_expiration: any, deal_status: MarketDealStatus }> } } | null | undefined } | null | undefined }> } | null | undefined };
 
 
 export const StatusByCidDocument = gql`
@@ -1731,7 +1731,7 @@ export const StatusByCidDocument = gql`
               deal_id: dealId
               miner: storageProviderId
               deal_expiration: dealExpiration
-              status
+              deal_status: marketDealStatus
             }
           }
         }
@@ -1754,7 +1754,7 @@ export const StatusByIdDocument = gql`
               deal_id: dealId
               miner: storageProviderId
               deal_expiration: dealExpiration
-              status
+              deal_status: marketDealStatus
             }
           }
         }

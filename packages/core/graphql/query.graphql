@@ -1,7 +1,5 @@
 query statusByCid($dataCid: String!) {
-  requests: allStorageRequests(
-    condition: {dataCid: $dataCid}
-  ) {
+  requests: allStorageRequests(condition: { dataCid: $dataCid }) {
     nodes {
       status
       id
@@ -13,7 +11,7 @@ query statusByCid($dataCid: String!) {
               deal_id: dealId
               miner: storageProviderId
               deal_expiration: dealExpiration
-              status
+              deal_status: marketDealStatus
             }
           }
         }
@@ -23,9 +21,7 @@ query statusByCid($dataCid: String!) {
 }
 
 query statusById($id: String!) {
-  requests: allStorageRequests(
-    condition: {id: $id}
-  ) {
+  requests: allStorageRequests(condition: { id: $id }) {
     nodes {
       status
       id
@@ -37,7 +33,7 @@ query statusById($id: String!) {
               deal_id: dealId
               miner: storageProviderId
               deal_expiration: dealExpiration
-              status
+              deal_status: marketDealStatus
             }
           }
         }

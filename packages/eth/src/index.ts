@@ -14,7 +14,7 @@ export { createToken };
 export {
   CoreAPI,
   StandardClaims,
-  StatusRequest,
+  RequestStatus,
   StorageRequest,
   DealInfo,
   InitOptions,
