@@ -1,5 +1,11 @@
 # @textile/core-storage
 
+## 1.0.0
+
+### Major Changes
+
+- a22de91: Support query by cid, fetch by cid, and new response types (breaking change)
+
 ## 0.1.0
 
 ### Minor Changes
