@@ -1,0 +1,43 @@
+query statusByCid($dataCid: String!) {
+  requests: allStorageRequests(condition: { dataCid: $dataCid }) {
+    nodes {
+      status
+      id
+      cid: dataCid
+      batch: batchByStoragePayloadId {
+        payload: storagePayloadByStoragePayloadId {
+          deals: dealsByStoragePayloadId {
+            nodes {
+              deal_id: dealId
+              miner: storageProviderId
+              deal_expiration: dealExpiration
+              deal_status: marketDealStatus
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+query statusById($id: String!) {
+  requests: allStorageRequests(condition: { id: $id }) {
+    nodes {
+      status
+      id
+      cid: dataCid
+      batch: batchByStoragePayloadId {
+        payload: storagePayloadByStoragePayloadId {
+          deals: dealsByStoragePayloadId {
+            nodes {
+              deal_id: dealId
+              miner: storageProviderId
+              deal_expiration: dealExpiration
+              deal_status: marketDealStatus
+            }
+          }
+        }
+      }
+    }
+  }
+}

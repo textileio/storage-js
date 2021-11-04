@@ -3,3 +3,4 @@ out/
 dist/
 coverage/
 docs/
+packages/core/src/client.ts

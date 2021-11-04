@@ -1,14 +1,21 @@
 import { expect, use } from "chai";
 import { BigNumber, utils } from "ethers";
 import { MockProvider, solidity } from "ethereum-waffle";
-import fetchMock from "fetch-mock-jest";
+import mocked from "fetch-mock-jest";
 import { FormData } from "formdata-node";
 import { Readable } from "stream";
-import { Encoder } from "form-data-encoder";
+import { FormDataEncoder } from "form-data-encoder";
 import {
   BridgeProvider__factory,
   BridgeRegistry__factory,
 } from "@textile/eth-storage-bridge";
+jest.mock("cross-fetch", () => {
+  const crossFetch = jest.requireActual("cross-fetch");
+  const fetchMock = mocked.sandbox();
+  Object.assign(fetchMock.config, { fetch: crossFetch });
+  return fetchMock;
+});
+import fetchMock from "cross-fetch";
 import { init, CoreAPI } from "../src";
 
 use(solidity);
@@ -22,7 +29,7 @@ describe("eth/main", () => {
   jest.setTimeout(20000);
   beforeAll(async () => {
     jest.setTimeout(10000);
-    fetchMock.post(
+    (fetchMock as any).post(
       "https://provider.io/upload",
       () => {
         return {
@@ -60,7 +67,7 @@ describe("eth/main", () => {
 
     const formData = new FormData();
     formData.set("file", "Hello, world!");
-    const encoder = new Encoder(formData);
+    const encoder = new FormDataEncoder(formData);
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     await contract.store(Readable.from(encoder) as any, {
       headers: encoder.headers,

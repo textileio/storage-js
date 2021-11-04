@@ -9,7 +9,8 @@
   "scripts": {
     "build": "npm run build:cjs && npm run build:esm",
     "build:cjs": "tsc -b",
-    "build:esm": "ttsc -b tsconfig.esm.json"
+    "build:esm": "ttsc -b tsconfig.esm.json",
+    "build:client": "graphql-codegen -c graphql/codegen.yml"
   },
   "exports": {
     ".": {
@@ -24,6 +25,14 @@
     "src/**/*.ts"
   ],
   "dependencies": {
-    "@stablelib/base64": "^1.0.1"
+    "@stablelib/base64": "^1.0.1",
+    "cross-fetch": "^3.1.4",
+    "graphql": "^15.7.2",
+    "graphql-request": "^3.6.1"
+  },
+  "devDependencies": {
+    "@graphql-codegen/cli": "^2.2.2",
+    "@graphql-codegen/typescript-graphql-request": "^4.2.0",
+    "@graphql-codegen/typescript-operations": "^2.2.0"
   }
 }

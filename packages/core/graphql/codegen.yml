@@ -1,0 +1,10 @@
+schema: https://broker.staging.textile.dev/graphql
+documents: ./graphql/query.graphql
+generates:
+  src/client.ts:
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-graphql-request
+    config:
+      rawRequest: true
