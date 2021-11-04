@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Deal | @textile/storage</title>
+	<title>RequestStatus | @textile/storage</title>
 	<meta name="description" content="Documentation for @textile/storage">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -55,13 +55,13 @@
 					<a href="../modules.html">@textile/storage</a>
 				</li>
 				<li>
-					<a href="../modules/_textile_core_storage.html">@textile/core-storage</a>
+					<a href="../modules/_textile_eth_storage.html">@textile/eth-storage</a>
 				</li>
 				<li>
-					<a href="_textile_core_storage.Deal.html">Deal</a>
+					<a href="_textile_eth_storage.RequestStatus.html">RequestStatus</a>
 				</li>
 			</ul>
-			<h1>Interface Deal</h1>
+			<h1>Interface RequestStatus</h1>
 		</div>
 	</div>
 </header>
@@ -71,8 +71,7 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Deal contains information of an on-chain deal.
-						TODO: We may have to consider using BigInt for deal expiration in the future.</p>
+						<p>RequestStatus describes the current state of a request.</p>
 					</div>
 				</div>
 			</section>
@@ -80,7 +79,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">Deal</span>
+						<span class="target">RequestStatus</span>
 					</li>
 				</ul>
 			</section>
@@ -91,9 +90,8 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_textile_core_storage.Deal.html#deal_expiration" class="tsd-kind-icon">deal_<wbr>expiration</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_textile_core_storage.Deal.html#deal_id" class="tsd-kind-icon">deal_<wbr>id</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_textile_core_storage.Deal.html#miner" class="tsd-kind-icon">miner</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_textile_eth_storage.RequestStatus.html#deals" class="tsd-kind-icon">deals</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_textile_eth_storage.RequestStatus.html#request" class="tsd-kind-icon">request</a></li>
 							</ul>
 						</section>
 					</div>
@@ -102,32 +100,22 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="deal_expiration" class="tsd-anchor"></a>
-					<h3>deal_<wbr>expiration</h3>
-					<div class="tsd-signature tsd-kind-icon">deal_<wbr>expiration<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<a name="deals" class="tsd-anchor"></a>
+					<h3>deals</h3>
+					<div class="tsd-signature tsd-kind-icon">deals<span class="tsd-signature-symbol">:</span> <a href="_textile_eth_storage.DealInfo.html" class="tsd-signature-type" data-tsd-kind="Interface">DealInfo</a><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/textileio/storage-js/blob/e33f3cd/packages/core/src/storage.ts#L50">core/src/storage.ts:50</a></li>
+							<li>Defined in core/dist/storage.d.ts:17</li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="deal_id" class="tsd-anchor"></a>
-					<h3>deal_<wbr>id</h3>
-					<div class="tsd-signature tsd-kind-icon">deal_<wbr>id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<a name="request" class="tsd-anchor"></a>
+					<h3>request</h3>
+					<div class="tsd-signature tsd-kind-icon">request<span class="tsd-signature-symbol">:</span> <a href="_textile_eth_storage.StorageRequest.html" class="tsd-signature-type" data-tsd-kind="Interface">StorageRequest</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/textileio/storage-js/blob/e33f3cd/packages/core/src/storage.ts#L49">core/src/storage.ts:49</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="miner" class="tsd-anchor"></a>
-					<h3>miner</h3>
-					<div class="tsd-signature tsd-kind-icon">miner<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/textileio/storage-js/blob/e33f3cd/packages/core/src/storage.ts#L48">core/src/storage.ts:48</a></li>
+							<li>Defined in core/dist/storage.d.ts:16</li>
 						</ul>
 					</aside>
 				</section>
@@ -139,10 +127,10 @@
 					<li class=" ">
 						<a href="../modules.html">Modules</a>
 					</li>
-					<li class="current tsd-kind-module">
+					<li class=" tsd-kind-module">
 						<a href="../modules/_textile_core_storage.html">@textile/core-<wbr>storage</a>
 					</li>
-					<li class=" tsd-kind-module">
+					<li class="current tsd-kind-module">
 						<a href="../modules/_textile_eth_storage.html">@textile/eth-<wbr>storage</a>
 					</li>
 					<li class=" tsd-kind-module">
@@ -152,71 +140,86 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
+						<a href="_textile_eth_storage.DealInfo.html" class="tsd-kind-icon">Deal<wbr>Info</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
+						<a href="_textile_eth_storage.DepositAdded.html" class="tsd-kind-icon">Deposit<wbr>Added</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
+						<a href="_textile_eth_storage.DepositReleased.html" class="tsd-kind-icon">Deposit<wbr>Released</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
+						<a href="_textile_eth_storage.Header.html" class="tsd-kind-icon">Header</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
+						<a href="_textile_eth_storage.InitOptions.html" class="tsd-kind-icon">Init<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
+						<a href="_textile_eth_storage.OpenOptions.html" class="tsd-kind-icon">Open<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-module tsd-has-type-parameter">
+						<a href="_textile_eth_storage.ProviderAPI.html" class="tsd-kind-icon">ProviderAPI</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
+						<a href="_textile_eth_storage.RegistryAPI.html" class="tsd-kind-icon">RegistryAPI</a>
+					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-parent-kind-module">
-						<a href="_textile_core_storage.Deal.html" class="tsd-kind-icon">Deal</a>
+						<a href="_textile_eth_storage.RequestStatus.html" class="tsd-kind-icon">Request<wbr>Status</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_textile_core_storage.Deal.html#deal_expiration" class="tsd-kind-icon">deal_<wbr>expiration</a>
+								<a href="_textile_eth_storage.RequestStatus.html#deals" class="tsd-kind-icon">deals</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_textile_core_storage.Deal.html#deal_id" class="tsd-kind-icon">deal_<wbr>id</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_textile_core_storage.Deal.html#miner" class="tsd-kind-icon">miner</a>
+								<a href="_textile_eth_storage.RequestStatus.html#request" class="tsd-kind-icon">request</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
 					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_textile_core_storage.DepositAdded.html" class="tsd-kind-icon">Deposit<wbr>Added</a>
+						<a href="_textile_eth_storage.Signer.html" class="tsd-kind-icon">Signer</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_textile_core_storage.DepositReleased.html" class="tsd-kind-icon">Deposit<wbr>Released</a>
+						<a href="_textile_eth_storage.StandardClaims.html" class="tsd-kind-icon">Standard<wbr>Claims</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_textile_core_storage.Header.html" class="tsd-kind-icon">Header</a>
+						<a href="_textile_eth_storage.StorageAPI.html" class="tsd-kind-icon">StorageAPI</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_textile_core_storage.InitOptions.html" class="tsd-kind-icon">Init<wbr>Options</a>
+						<a href="_textile_eth_storage.StorageConfig.html" class="tsd-kind-icon">Storage<wbr>Config</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_textile_core_storage.OpenOptions.html" class="tsd-kind-icon">Open<wbr>Options</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-module tsd-has-type-parameter">
-						<a href="_textile_core_storage.ProviderAPI.html" class="tsd-kind-icon">ProviderAPI</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_textile_core_storage.RegistryAPI.html" class="tsd-kind-icon">RegistryAPI</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_textile_core_storage.Request.html" class="tsd-kind-icon">Request</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_textile_core_storage.RequestInfo.html" class="tsd-kind-icon">Request<wbr>Info</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_textile_core_storage.Signer.html" class="tsd-kind-icon">Signer</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_textile_core_storage.StandardClaims.html" class="tsd-kind-icon">Standard<wbr>Claims</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_textile_core_storage.StorageAPI.html" class="tsd-kind-icon">StorageAPI</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_textile_core_storage.StorageConfig.html" class="tsd-kind-icon">Storage<wbr>Config</a>
+						<a href="_textile_eth_storage.StorageRequest.html" class="tsd-kind-icon">Storage<wbr>Request</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-module tsd-has-type-parameter">
-						<a href="../modules/_textile_core_storage.html#CoreAPI" class="tsd-kind-icon">CoreAPI</a>
+						<a href="../modules/_textile_eth_storage.html#CoreAPI" class="tsd-kind-icon">CoreAPI</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-module">
+						<a href="../modules/_textile_eth_storage.html#DEPOSIT" class="tsd-kind-icon">DEPOSIT</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-module">
+						<a href="../modules/_textile_eth_storage.html#GAS" class="tsd-kind-icon">GAS</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-module">
+						<a href="../modules/_textile_eth_storage.html#PROVIDER_ID" class="tsd-kind-icon">PROVIDER_<wbr>ID</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-module">
+						<a href="../modules/_textile_eth_storage.html#REGISTRY_ID" class="tsd-kind-icon">REGISTRY_<wbr>ID</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
-						<a href="../modules/_textile_core_storage.html#create" class="tsd-kind-icon">create</a>
+						<a href="../modules/_textile_eth_storage.html#createToken" class="tsd-kind-icon">create<wbr>Token</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
-						<a href="../modules/_textile_core_storage.html#createToken" class="tsd-kind-icon">create<wbr>Token</a>
+						<a href="../modules/_textile_eth_storage.html#estimateDeposit" class="tsd-kind-icon">estimate<wbr>Deposit</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="../modules/_textile_eth_storage.html#init" class="tsd-kind-icon">init</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="../modules/_textile_eth_storage.html#requestSignIn" class="tsd-kind-icon">request<wbr>Sign<wbr>In</a>
 					</li>
 				</ul>
 			</nav>
@@ -236,6 +239,9 @@
 				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
 				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
 				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
 			</ul>
 		</div>
 	</div>

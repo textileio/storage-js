@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Request | @textile/storage</title>
+	<title>StorageRequest | @textile/storage</title>
 	<meta name="description" content="Documentation for @textile/storage">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -58,28 +58,21 @@
 					<a href="../modules/_textile_core_storage.html">@textile/core-storage</a>
 				</li>
 				<li>
-					<a href="_textile_core_storage.Request.html">Request</a>
+					<a href="_textile_core_storage.StorageRequest.html">StorageRequest</a>
 				</li>
 			</ul>
-			<h1>Interface Request</h1>
+			<h1>Interface StorageRequest</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<section class="tsd-panel tsd-comment">
-				<div class="tsd-comment tsd-typography">
-					<div class="lead">
-						<p>Request is a request for storing data in a Provider.</p>
-					</div>
-				</div>
-			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">Request</span>
+						<span class="target">StorageRequest</span>
 					</li>
 				</ul>
 			</section>
@@ -90,9 +83,9 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_textile_core_storage.Request.html#cid" class="tsd-kind-icon">cid</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_textile_core_storage.Request.html#id" class="tsd-kind-icon">id</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_textile_core_storage.Request.html#status_code" class="tsd-kind-icon">status_<wbr>code</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_textile_core_storage.StorageRequest.html#cid" class="tsd-kind-icon">cid</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_textile_core_storage.StorageRequest.html#id" class="tsd-kind-icon">id</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_textile_core_storage.StorageRequest.html#status" class="tsd-kind-icon">status</a></li>
 							</ul>
 						</section>
 					</div>
@@ -106,7 +99,7 @@
 					<div class="tsd-signature tsd-kind-icon">cid<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>/<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/textileio/storage-js/blob/e33f3cd/packages/core/src/storage.ts#L29">core/src/storage.ts:29</a></li>
+							<li>Defined in <a href="https://github.com/textileio/storage-js/blob/07eb5b2/packages/core/src/storage.ts#L19">core/src/storage.ts:19</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -124,17 +117,17 @@
 					<div class="tsd-signature tsd-kind-icon">id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/textileio/storage-js/blob/e33f3cd/packages/core/src/storage.ts#L28">core/src/storage.ts:28</a></li>
+							<li>Defined in <a href="https://github.com/textileio/storage-js/blob/07eb5b2/packages/core/src/storage.ts#L18">core/src/storage.ts:18</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="status_code" class="tsd-anchor"></a>
-					<h3>status_<wbr>code</h3>
-					<div class="tsd-signature tsd-kind-icon">status_<wbr>code<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Status</span></div>
+					<a name="status" class="tsd-anchor"></a>
+					<h3>status</h3>
+					<div class="tsd-signature tsd-kind-icon">status<span class="tsd-signature-symbol">:</span> <a href="../enums/_textile_core_storage.StorageRequestStatus.html" class="tsd-signature-type" data-tsd-kind="Enumeration">StorageRequestStatus</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/textileio/storage-js/blob/e33f3cd/packages/core/src/storage.ts#L32">core/src/storage.ts:32</a></li>
+							<li>Defined in <a href="https://github.com/textileio/storage-js/blob/07eb5b2/packages/core/src/storage.ts#L22">core/src/storage.ts:22</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -159,8 +152,14 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+					<li class=" tsd-kind-enum tsd-parent-kind-module">
+						<a href="../enums/_textile_core_storage.MarketDealStatus.html" class="tsd-kind-icon">Market<wbr>Deal<wbr>Status</a>
+					</li>
+					<li class=" tsd-kind-enum tsd-parent-kind-module">
+						<a href="../enums/_textile_core_storage.StorageRequestStatus.html" class="tsd-kind-icon">Storage<wbr>Request<wbr>Status</a>
+					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_textile_core_storage.Deal.html" class="tsd-kind-icon">Deal</a>
+						<a href="_textile_core_storage.DealInfo.html" class="tsd-kind-icon">Deal<wbr>Info</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-module">
 						<a href="_textile_core_storage.DepositAdded.html" class="tsd-kind-icon">Deposit<wbr>Added</a>
@@ -183,26 +182,8 @@
 					<li class=" tsd-kind-interface tsd-parent-kind-module">
 						<a href="_textile_core_storage.RegistryAPI.html" class="tsd-kind-icon">RegistryAPI</a>
 					</li>
-				</ul>
-				<ul class="current">
-					<li class="current tsd-kind-interface tsd-parent-kind-module">
-						<a href="_textile_core_storage.Request.html" class="tsd-kind-icon">Request</a>
-						<ul>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_textile_core_storage.Request.html#cid" class="tsd-kind-icon">cid</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_textile_core_storage.Request.html#id" class="tsd-kind-icon">id</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_textile_core_storage.Request.html#status_code" class="tsd-kind-icon">status_<wbr>code</a>
-							</li>
-						</ul>
-					</li>
-				</ul>
-				<ul class="after-current">
 					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_textile_core_storage.RequestInfo.html" class="tsd-kind-icon">Request<wbr>Info</a>
+						<a href="_textile_core_storage.RequestStatus.html" class="tsd-kind-icon">Request<wbr>Status</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-module">
 						<a href="_textile_core_storage.Signer.html" class="tsd-kind-icon">Signer</a>
@@ -216,6 +197,24 @@
 					<li class=" tsd-kind-interface tsd-parent-kind-module">
 						<a href="_textile_core_storage.StorageConfig.html" class="tsd-kind-icon">Storage<wbr>Config</a>
 					</li>
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-interface tsd-parent-kind-module">
+						<a href="_textile_core_storage.StorageRequest.html" class="tsd-kind-icon">Storage<wbr>Request</a>
+						<ul>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_textile_core_storage.StorageRequest.html#cid" class="tsd-kind-icon">cid</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_textile_core_storage.StorageRequest.html#id" class="tsd-kind-icon">id</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_textile_core_storage.StorageRequest.html#status" class="tsd-kind-icon">status</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="after-current">
 					<li class=" tsd-kind-type-alias tsd-parent-kind-module tsd-has-type-parameter">
 						<a href="../modules/_textile_core_storage.html#CoreAPI" class="tsd-kind-icon">CoreAPI</a>
 					</li>
@@ -243,6 +242,9 @@
 				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
 				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
 				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
 			</ul>
 		</div>
 	</div>
