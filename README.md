@@ -10,6 +10,9 @@
 
 > Javascript/Typescript SDK for Textile's blockchain ↔ Filecoin bridge system
 
+# Important note
+**This repository has been [archived](https://blog.textile.io/sunsetting-the-auction-api/) and is no longer maintained. If you are looking for an alternative tool to use, try one of these: [Estuary](https://estuary.tech/), [Web3 Storage](https://web3.storage/), or lookout for the coming release of ♠️(SPADE).**
+
 # Table of Contents
 
 - [Background](#background)
